@@ -17,19 +17,16 @@ class Controller_Register extends Controller_Template
 			->rule('email', 'email')
 			->rule('password', 'not_empty')
 			->rule('password_again', 'not_empty')
-			->rule('password', 'matches', array(':validation', 'password', 'password_again'))
-			->rule('picture', 'url');
+			->rule('password', 'matches', array(':validation', 'password', 'password_again'));
 
 			if ($post->check()) {
 				$username = $this->request->post('username');
 				$password = crypt($this->request->post('password'), 'generatedsalt');
-				$picture  = $this->request->post('picture');
 				$email    = $this->request->post('email');
 				$user     = new Model_User();
 				$data     = array(
 					'username' => $username,
 					'password' => $password,
-					'picture'  => $picture,
 					'email'    => $email,
 					);
 				$create_user = $user->create($data);

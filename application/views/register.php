@@ -24,10 +24,6 @@
 			<td><input type="password" name="password_again" /></td>
 		</tr>
 		<tr>
-			<th>Your profile image</th>
-			<td><input type="text" name="picture" /></td>
-		</tr>
-		<tr>
 			<th></th>
 			<td><input type="submit" value="Register" /></td>
 	</table>
