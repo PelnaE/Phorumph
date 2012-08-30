@@ -49,4 +49,11 @@ class Model_User extends Model
 		->as_object()
 		->execute();
 	}
+	public function change_password($password, $email)
+	{
+		return DB::update('users')
+		->set(array('password' => $password))
+		->where('email', '=', $email)
+		->execute();
+	}
 }

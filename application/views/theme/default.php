@@ -11,6 +11,7 @@
 			<?php foreach ($users as $user) : ?>
 				<h2>Hey, <?php echo $user->username; ?>!</h2>
 				You are logged in <?php echo $site_name; ?>!<br />
+				<a href="<?php echo URL::site('profile/change_password/'); ?>">Change Password</a> |
 				<a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">LogOut</a>
 			<?php endforeach; ?>
 		<?php else: ?>
