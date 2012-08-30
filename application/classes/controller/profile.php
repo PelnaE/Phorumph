@@ -75,4 +75,17 @@ class Controller_Profile extends Controller_Template
 		}
 		$this->template->content = $view->render();
 	}
+
+
+	public function action_view()
+	{
+		$user_id = $this->request->param('id');
+		if (empty($user_id)) {
+			throw new Exception("User ID Must not be empty!");
+		}
+		$user = new Model_User();
+		$view = View::factory('profile/view');
+		$view->users = $user->get_data($user_id);
+		$this->template->content = $view->render();
+	}
 }

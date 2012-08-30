@@ -7,6 +7,10 @@
 		footer {
 			clear: both;
 		}
+		header ul
+		{
+			clear: both;
+		}
 	</style>
 </head>
 <body>
@@ -14,14 +18,21 @@
 		<h1><a href="<?php echo URL::site(''); ?>"><?php echo $site_name; ?></a></h1>
 		<?php if (Auth::is_user_signed_in()) : ?>
 			<?php foreach ($users as $user) : ?>
-				<h2>Hey, <?php echo $user->username; ?>!</h2>
+				<h2>Hey, <a href="<?php echo URL::site('profile/view/'.$user->id); ?>"><?php echo $user->username; ?></a>!</h2>
 				<?php if (!empty($user->picture)) : ?>
 					<img src="<?php echo $user->picture; ?>" height="50px" align="left" />
 				<?php endif; ?>
-				You are logged in <?php echo $site_name; ?>!<br />
-				<a href="<?php echo URL::site('profile/upload_avatar/'); ?>">Change Avatar</a> |
-				<a href="<?php echo URL::site('profile/change_password/'); ?>">Change Password</a> |
-				<a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">LogOut</a>
+				Today is <?php echo date('l', time()); ?>, the
+				<?php echo date('W', time()); ?> week of the year
+				<?php echo date('Y', time()); ?>!
+				Or, simpler - <?php echo date('d.m.Y H:i:s T', time()); ?>
+				<br />There is your signature - <?php echo $user->signature; ?>
+				<ul>
+					<li><a href="<?php echo URL::site('profile/change_signature/'); ?>">Change Signature</a></li>
+					<li><a href="<?php echo URL::site('profile/upload_avatar/'); ?>">Change Avatar</a></li>
+					<li><a href="<?php echo URL::site('profile/change_password/'); ?>">Change Password</a></li>
+					<li><a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">LogOut</a></li>
+				</ul>
 			<?php endforeach; ?>
 		<?php else: ?>
 			<h2>Login:</h2>
