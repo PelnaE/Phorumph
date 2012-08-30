@@ -8,9 +8,11 @@
 	<header>
 		<h1><a href="<?php echo URL::site(''); ?>"><?php echo $site_name; ?></a></h1>
 		<?php if (Session::instance()->get('user_id')) : ?>
-			<h2>Hey!</h2>
-			You are logged in!<br />
-			<a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">LogOut</a>!
+			<?php foreach ($users as $user) : ?>
+				<h2>Hey, <?php echo $user->username; ?>!</h2>
+				You are logged in <?php echo $site_name; ?>!<br />
+				<a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">LogOut</a>
+			<?php endforeach; ?>
 		<?php else: ?>
 			<h2>Login:</h2>
 			<form action="<?php echo URL::site('login/index/'.Security::token()); ?>" method="post">

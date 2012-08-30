@@ -41,4 +41,12 @@ class Model_User extends Model
 		->get('password');
 
 	}
+	public function get_data($user_id)
+	{
+		return DB::select()
+		->from('users')
+		->where('id', '=', $user_id)
+		->as_object()
+		->execute();
+	}
 }
