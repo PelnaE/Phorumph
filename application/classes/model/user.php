@@ -16,6 +16,14 @@ class Model_User extends Model
 		->execute()
 		->get('total');
 	}
+	static function unique_email($email)
+	{
+		return ! DB::select(array(DB::expr('COUNT(email)'), 'total'))
+		->from('users')
+		->where('email', '=', $email)
+		->execute()
+		->get('total');
+	}
 	public function id($username)
 	{
 		return DB::select()

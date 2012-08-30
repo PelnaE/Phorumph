@@ -14,6 +14,7 @@ class Controller_Register extends Controller_Template
 			->rule('username', 'not_empty')
 			->rule('username', 'Model_User::is_username_taked')
 			->rule('email', 'not_empty')
+			->rule('email', 'Model_User::unique_email')
 			->rule('email', 'email')
 			->rule('password', 'not_empty')
 			->rule('password_again', 'not_empty')
