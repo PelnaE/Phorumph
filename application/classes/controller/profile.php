@@ -32,4 +32,28 @@ class Controller_Profile extends Controller_Template
 			$this->request->redirect('/');
 		}
 	}
+	public function action_upload_avatar()
+	{
+		$view = View::factory('profile/upload_avatar');
+		$user = new Model_User();
+		$this->template->content = $view->render();
+		if ($this->request->method() === Request::POST) {
+			if (!Security::check($this->request->param('id'))) {
+				throw new Exception("Bad token!");
+			}
+			$user_id = Session::instance()->get('user_id');
+			$image = Validation::factory($_FILES)
+			->rule('image', 'Upload::not_empty')
+			->rule('image', 'Upload::type', array(':value', array('jpg', 'png', 'gif')));
+			if ($image->check()) {
+				Upload::save($image['image'],$user_id."_".$image['image']['name'], 'public/avatars');
+				$picture = "http://localhost".URL::site('public/avatars')."/".$user_id."_".$image['image']['name'];
+				$change_avatar = $user->change_avatar($user_id, $picture);
+				if (!$change_avatar) {
+					throw new Exception("Error with uploading avatar. \n $change_avatar");
+				}
+				$this->request->redirect('/');
+			}
+		}
+	}
 }

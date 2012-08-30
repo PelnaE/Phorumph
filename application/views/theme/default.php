@@ -10,7 +10,11 @@
 		<?php if (Session::instance()->get('user_id')) : ?>
 			<?php foreach ($users as $user) : ?>
 				<h2>Hey, <?php echo $user->username; ?>!</h2>
+				<?php if (!empty($user->picture)) : ?>
+					<img src="<?php echo $user->picture; ?>" height="50px" align="left" />
+				<?php endif; ?>
 				You are logged in <?php echo $site_name; ?>!<br />
+				<a href="<?php echo URL::site('profile/upload_avatar/'); ?>">Change Avatar</a> |
 				<a href="<?php echo URL::site('profile/change_password/'); ?>">Change Password</a> |
 				<a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">LogOut</a>
 			<?php endforeach; ?>

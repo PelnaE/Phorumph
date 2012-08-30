@@ -56,4 +56,11 @@ class Model_User extends Model
 		->where('email', '=', $email)
 		->execute();
 	}
+	public function change_avatar($user_id, $url)
+	{
+		return DB::update('users')
+		->set(array('picture' => $url))
+		->where('id', '=', $user_id)
+		->execute();
+	}
 }
