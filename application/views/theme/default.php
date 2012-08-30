@@ -8,7 +8,7 @@
 	<header>
 		<h1><a href="<?php echo URL::site(''); ?>"><?php echo $site_name; ?></a></h1>
 		<h2>Login:</h2>
-		<form action="<?php echo URL::site('login/'.Security::token()); ?>" method="post">
+		<form action="<?php echo URL::site('login/index/'.Security::token()); ?>" method="post">
 			Username <input type="text" name="username" /><br />
 			Password <input type="password" name="password" /><br />
 			<input type="submit" value="Login" />
