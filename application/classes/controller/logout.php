@@ -11,6 +11,12 @@ class Controller_Logout extends Controller_Template
 			throw new Exception("You must be logged in to logout!");
 		}
 		Session::instance()->delete('user_id');
+		if (Cookie::get('user_id')) {
+			Cookie::delete('user_id');
+			if (!Cookie::delete('user_id')) {
+				throw new Exception("Cookie error.");
+			}
+		}
 		if (!Session::instance()->delete('user_id')) {
 			throw new Exception("Session error.");
 		}

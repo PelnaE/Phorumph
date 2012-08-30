@@ -8,6 +8,7 @@ class Controller_Login extends Controller_Template
 			throw new Exception("Bad token!");
 		}
 		$username = $this->request->post('username');
+		$cookie   = $this->request->post('cookie');
 		$password = crypt($this->request->post('password'), 'generatedsalt');
 		$user     = new Model_User();
 		$unique_username = $user->is_username_taked($username);
@@ -24,6 +25,9 @@ class Controller_Login extends Controller_Template
 			throw new Exception("Password is not correct \n $password_from_db $password");
 		}
 		Session::instance()->set('user_id', $user_id);
+		if (!empty($cookie)) {
+			Cookie::set('user_id', $user_id);
+		}
 		$this->request->redirect('');
 	}
 }

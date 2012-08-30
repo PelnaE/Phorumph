@@ -7,7 +7,7 @@
 <body>
 	<header>
 		<h1><a href="<?php echo URL::site(''); ?>"><?php echo $site_name; ?></a></h1>
-		<?php if (Session::instance()->get('user_id')) : ?>
+		<?php if (Auth::is_user_signed_in()) : ?>
 			<?php foreach ($users as $user) : ?>
 				<h2>Hey, <?php echo $user->username; ?>!</h2>
 				<?php if (!empty($user->picture)) : ?>
@@ -23,6 +23,7 @@
 			<form action="<?php echo URL::site('login/index/'.Security::token()); ?>" method="post">
 				Username <input type="text" name="username" /><br />
 				Password <input type="password" name="password" /><br />
+				<label><input type="checkbox" name="cookie" /> Remember me!</label><br />
 				<input type="submit" value="Login" />
 			</form>
 			If you do not have an account, <a href="<?php echo URL::site("register"); ?>">register it there</a>!
