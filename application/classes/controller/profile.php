@@ -56,4 +56,23 @@ class Controller_Profile extends Controller_Template
 			}
 		}
 	}
+
+	public function action_change_signature()
+	{
+		$user = new Model_User();
+		$view = View::factory('profile/change_signature');
+		$view->users = $user->get_data(Session::instance()->get('user_id'));
+		if ($this->request->method() === Request::POST) {
+			if (!Security::check($this->request->param('id'))) {
+				throw new Exception("Bad token!");
+			}
+			$new_signature = $this->request->post('signature');
+			$update_signature = $user->change_signature($new_signature, Session::instance()->get('user_id'));
+			if (!$update_signature) {
+				throw new Exception('Signature could not be saved!');
+			}
+			$this->request->redirect('/');
+		}
+		$this->template->content = $view->render();
+	}
 }

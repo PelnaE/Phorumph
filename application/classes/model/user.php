@@ -71,4 +71,12 @@ class Model_User extends Model
 		->where('id', '=', $user_id)
 		->execute();
 	}
+
+	public function change_signature($signature, $user_id)
+	{
+		return DB::update('users')
+		->set(array('signature' => $signature))
+		->where('id', '=', $user_id)
+		->execute();
+	}
 }
