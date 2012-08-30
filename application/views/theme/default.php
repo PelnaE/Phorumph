@@ -11,6 +11,11 @@
 		{
 			clear: both;
 		}
+		header p
+		{
+			padding:0;
+			margin: 0;
+		}
 	</style>
 </head>
 <body>
@@ -26,7 +31,6 @@
 				<?php echo date('W', time()); ?> week of the year
 				<?php echo date('Y', time()); ?>!
 				Or, simpler - <?php echo date('d.m.Y H:i:s T', time()); ?>
-				<br />There is your signature - <?php echo $user->signature; ?>
 				<ul>
 					<li><a href="<?php echo URL::site('profile/change_signature/'); ?>">Change Signature</a></li>
 					<li><a href="<?php echo URL::site('profile/upload_avatar/'); ?>">Change Avatar</a></li>
