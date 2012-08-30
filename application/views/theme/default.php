@@ -3,6 +3,11 @@
 <head>
 	<title><?php echo $site_name; ?></title>
 	<meta charset="UTF-8" />
+	<style type="text/css">
+		footer {
+			clear: both;
+		}
+	</style>
 </head>
 <body>
 	<header>
