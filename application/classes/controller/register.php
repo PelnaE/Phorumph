@@ -17,6 +17,7 @@ class Controller_Register extends Controller_Template
 			->rule('email', 'Model_User::unique_email')
 			->rule('email', 'email')
 			->rule('password', 'not_empty')
+			->rule('password', 'min_length', array(':value', '8'))
 			->rule('password_again', 'not_empty')
 			->rule('password', 'matches', array(':validation', 'password', 'password_again'));
 
