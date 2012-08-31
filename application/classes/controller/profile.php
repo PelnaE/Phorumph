@@ -27,7 +27,7 @@ class Controller_Profile extends Controller_Template
 			$password = crypt($password, 'generatedsalt');
 			$change_password = $user->change_password($password, $email);
 			if (!$change_password) {
-				$this->template->content = $view->bind('errors', $this->true);
+				throw new Exception("Error with password's change!");
 			}
 			$this->request->redirect('/');
 		}
