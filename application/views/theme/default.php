@@ -27,7 +27,7 @@
 					<img src="<?php echo $user->picture; ?>" height="50px" align="left" />
 				<?php endif; ?>
 				<h2>
-					Hey, <a href="<?php echo URL::site('profile/view/'.$user->id); ?>"><?php echo $user->username; ?></a>!
+					Hey, <a href="<?php echo URL::site('profile/view/'.$user->id); ?>"><?php echo HTML::chars($user->username); ?></a>!
 					(<a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">Logout</a>)
 				</h2>
 				Today is <?php echo date('l', time()); ?>, the

@@ -2,7 +2,7 @@
 
 	<?php $user_id = Session::instance()->get('user_id'); ?>
 
-	<h2><?php echo $user->username; ?>'s profile:</h2>
+	<h2><?php echo HTML::chars($user->username); ?>'s profile:</h2>
 
 	<?php if (!empty($user->picture)): ?>
 
