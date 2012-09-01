@@ -79,4 +79,12 @@ class Model_User extends Model
 		->where('id', '=', $user_id)
 		->execute();
 	}
+
+	public function delete_avatar($user_id)
+	{
+		return DB::update('users')
+		->set(array('picture' => ''))
+		->where('id', '=', $user_id)
+		->execute();
+	}
 }

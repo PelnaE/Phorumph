@@ -57,6 +57,19 @@ class Controller_Profile extends Controller_Template
 		}
 	}
 
+	public function action_delete_avatar()
+	{
+		if (!Security::check($this->request->param('id'))) {
+			throw new Exception("Bad token!");
+		}
+		$user = new Model_User();
+		$delete_avatar = $user->delete_avatar(Session::instance()->get('user_id'));
+		if (!$delete_avatar) {
+			throw new Exception("Error with deleting avatar.");
+		}
+		$this->request->redirect('profile/view/'. Session::instance()->get('user_id'));
+	}
+
 	public function action_change_signature()
 	{
 		$user = new Model_User();

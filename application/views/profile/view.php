@@ -36,6 +36,7 @@
 		<ul>
 			<li><a href="<?php echo URL::site('profile/change_signature/'); ?>">Change Signature</a></li>
 			<li><a href="<?php echo URL::site('profile/upload_avatar/'); ?>">Change Avatar</a></li>
+			<li><a href="<?php echo URL::site('profile/delete_avatar/'.Security::token()); ?>">Delete Avatar</a></li>
 			<li><a href="<?php echo URL::site('profile/change_password/'); ?>">Change Password</a></li>
 			<li><a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">LogOut</a></li>
 		</ul>
