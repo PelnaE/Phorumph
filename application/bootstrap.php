@@ -106,6 +106,8 @@ Kohana::modules(array(
 	'darkmown'   => MODPATH.'darkmown',
 	'pagination' => MODPATH.'pagination',
 	'database'   => MODPATH.'database',
+	'email'      => MODPATH.'email',
+	'unittest'   => MODPATH.'unittest',
 	));
 
 /**
