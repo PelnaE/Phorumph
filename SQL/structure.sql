@@ -25,6 +25,7 @@ CREATE TABLE `users` (
   `email` text NOT NULL,
   `password` text NOT NULL,
   `picture` text NOT NULL,
+  `signature` text NOT NULL,
   `user_role` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;

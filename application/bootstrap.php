@@ -55,7 +55,8 @@ ini_set('unserialize_callback_func', 'spl_autoload_call');
  */
 I18n::lang('en-us');
 
-Cookie::$salt = rand();
+Cookie::$salt = 'generatedsalt';
+Cookie::$expiration = 6400;
 
 /**
  * Set Kohana::$environment if a 'KOHANA_ENV' environment variable has been supplied.
@@ -105,6 +106,8 @@ Kohana::modules(array(
 	'darkmown'   => MODPATH.'darkmown',
 	'pagination' => MODPATH.'pagination',
 	'database'   => MODPATH.'database',
+	'email'      => MODPATH.'email',
+	'unittest'   => MODPATH.'unittest',
 	));
 
 /**
