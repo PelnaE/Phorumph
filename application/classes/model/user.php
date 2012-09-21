@@ -87,4 +87,20 @@ class Model_User extends Model
 		->where('id', '=', $user_id)
 		->execute();
 	}
+
+	public function get_id($email)
+	{
+		return DB::select('email', 'id')
+		->from('users')
+		->where('email', '=', $email)
+		->execute()
+		->get('id');
+	}
+	public function recover_password($password, $id)
+	{
+		return DB::update('users')
+		->set(array('password' => $password))
+		->where('id', '=', $id)
+		->execute();
+	}
 }
