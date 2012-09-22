@@ -10,7 +10,7 @@
 			<td>#<?php echo $category->id; ?></td>
 			<td>
                 <h3 style="margin:0">
-                <a href='<?php echo URL::site("category/".$category->id) ?>'><?php echo $category->name ?></a>
+                <a href='<?php echo URL::site("category/index/".$category->id) ?>'><?php echo $category->name ?></a>
                 </h3>
 				<?php echo $category->description; ?>
 			</td>
