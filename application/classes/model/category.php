@@ -9,4 +9,12 @@ class Model_Category extends Model
 		->as_object()
 		->execute();
 	}
+    public function get_name($id)
+    {
+        return DB::select('name')
+            ->from('categories')
+            ->where('id', '=', $id)
+            ->execute()
+            ->get('name');
+    }
 }
