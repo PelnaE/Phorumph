@@ -28,5 +28,13 @@ class Controller_Topic extends Controller_Template
             }
         }
     }
+    public function action_view()
+    {
+        $view = View::factory('topic/view');
+        $topic_id = $this->request->param('id');
+        $topic    = new Model_Topic();
+        $view->topics = $topic->get_topic_by_id($topic_id);
+        $this->template->content = $view->render();
+    }
 }
 

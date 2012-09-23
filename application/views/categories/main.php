@@ -9,9 +9,9 @@
                 <th>Author</th>
             </tr>
         <?php foreach($topics as $topic): ?>
-            <tr>
+        <tr>
                 <td><?php echo $topic->topic_id; ?></td>
-                <td><?php echo HTML::chars($topic->title); ?></td>
+                <td><a href="<?php echo URL::site('topic/view/'.$topic->topic_id); ?>"><?php echo HTML::chars($topic->title); ?></a></td>
                 <td><?php echo date('d.m.Y H:i:s', $topic->published); ?></td>
                 <td><?php echo $topic->username; ?></td>
             </tr>

@@ -18,5 +18,15 @@ class Model_Topic extends Model
             ->as_object()
             ->execute();
     }
+    public function get_topic_by_id($id)
+    {
+        return DB::select('topics.*', 'users.*')
+            ->from('topics')
+            ->join('users')
+            ->on('topics.author_id', '=', 'users.id')
+            ->where('topics.topic_id', '=', $id)
+            ->as_object()
+            ->execute();
+    }
 }
 
