@@ -16,6 +16,8 @@
         <td valign="top">
             <?php echo date("d.m.Y H:i:s", $topic->published); ?><br />
             <?php echo Darkmown::parse($topic->content); ?>
+            <hr />
+            <?php echo Darkmown::parse($topic->signature); ?>
         </td>
     </tr>
 </table>
