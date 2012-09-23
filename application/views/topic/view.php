@@ -15,7 +15,7 @@
         </td>
         <td valign="top">
             <?php echo date("d.m.Y H:i:s", $topic->published); ?><br />
-            <?php echo $topic->content; ?>
+            <?php echo Darkmown::parse($topic->content); ?>
         </td>
     </tr>
 </table>
