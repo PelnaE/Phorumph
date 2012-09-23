@@ -8,5 +8,15 @@ class Model_Topic extends Model
             ->values(array_values($data))
             ->execute();
     }
+    public function get_topics_by_id($id)
+    {
+        return DB::select('topics.*', 'users.*')
+            ->from('topics')
+            ->join('users')
+            ->on('topics.author_id', '=', 'users.id')
+            ->where('category_id', '=', $id)
+            ->as_object()
+            ->execute();
+    }
 }
 
