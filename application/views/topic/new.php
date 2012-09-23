@@ -1,5 +1,5 @@
 
-<form action="<?php echo ('topic/new/'.Security::token()); ?>" method="post">
+<form action="<?php echo URL::site('topic/new/'.Security::token()); ?>" method="post">
     Topic title: <input type="text" name="title" /><br />
     <?php if (isset($categories)): ?>
         <select name="category_id">

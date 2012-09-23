@@ -10,6 +10,9 @@ class Controller_Topic extends Controller_Template
         $view->categories = $category->get_all_categories();
         $this->template->content = $view->render();
         if ($this->request->method() === Request::POST) {
+            if (!Security::check($this->request->param('id'))) {
+                throw new Exception("Bad token!");
+            }
             $title = $this->request->post('title');
             $category_id = $this->request->post('category_id');
             $author = Session::instance()->get('user_id');
@@ -26,6 +29,7 @@ class Controller_Topic extends Controller_Template
             if (!$publish_topic) {
                 throw new Exception("Cannot publish your topic!");
             }
+            $this->request->redirect('category/index/'.$category_id);
         }
     }
     public function action_view()
