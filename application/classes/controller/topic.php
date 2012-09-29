@@ -58,7 +58,7 @@ class Controller_Topic extends Controller_Template
                 'title' => $topic_title,
                 'content' => $topic_content,
             );
-            $update_topic = $topic->update($data);
+            $update_topic = $topic->update($data, $topic_id);
             if (!$update_topic) {
                 throw new Exception("Error");
             }
