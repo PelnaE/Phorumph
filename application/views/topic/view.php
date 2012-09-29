@@ -6,6 +6,8 @@
     </a>
     &mdash;
     <?php echo HTML::chars($topic->title); ?>
+     |
+    <a href="<?php echo URL::site("topic/edit/".$topic->topic_id); ?>">Edit a Topic</a>
 </h3>
 <table width="40%" border="1px" cellspacing="1" cellpadding="5">
     <tr>
