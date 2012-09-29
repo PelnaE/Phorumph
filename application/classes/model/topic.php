@@ -28,5 +28,11 @@ class Model_Topic extends Model
             ->as_object()
             ->execute();
     }
+    public function update (array $data)
+    {
+        return DB::update('topics')
+            ->set($data)
+            ->execute();
+    }
 }
 

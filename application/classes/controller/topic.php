@@ -40,5 +40,30 @@ class Controller_Topic extends Controller_Template
         $view->topics = $topic->get_topic_by_id($topic_id);
         $this->template->content = $view->render();
     }
+    public function action_edit()
+    {
+        $view = View::factory("topic/edit");
+        $topic_id = $this->request->param('id');
+        $topic    = new Model_Topic();
+        $view->topics = $topic->get_topic_by_id($topic_id);
+        $this->template->content = $view->render();
+        if ($this->request->method() === Request::POST) {
+            $topic_title = $this->request->post('title');
+            $topic_content = $this->request->post('content');
+            $topic_edited = time();
+            if (empty($topic_title) and empty($topic_content)) {
+                throw new Exception("Title and Content must not be empty!");
+            }
+            $data = array(
+                'title' => $topic_title,
+                'content' => $topic_content,
+            );
+            $update_topic = $topic->update($data);
+            if (!$update_topic) {
+                throw new Exception("Error");
+            }
+            $this->request->redirect('');
+        }
+    }
 }
 
