@@ -51,7 +51,7 @@ class Controller_Topic extends Controller_Template
             $topic_title = $this->request->post('title');
             $topic_content = $this->request->post('content');
             $topic_edited = time();
-            if (empty($topic_title) and empty($topic_content)) {
+            if (empty($topic_title) or empty($topic_content)) {
                 throw new Exception("Title and Content must not be empty!");
             }
             $data = array(
