@@ -17,6 +17,14 @@ class Controller_Topic extends Controller_Template
             $category_id = $this->request->post('category_id');
             $author = Session::instance()->get('user_id');
             $content = $this->request->post('content');
+            if (
+                empty($title) or
+                empty($category_id) or
+                empty($author) or
+                empty($content)
+            ) {
+                throw new Exception("Fields cannot be empty!");
+            }
             $data    = array(
                 'title' => $title,
                 'category_id' => $category_id,
