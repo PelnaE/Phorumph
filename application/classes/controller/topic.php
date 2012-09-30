@@ -56,7 +56,7 @@ class Controller_Topic extends Controller_Template
         $view->topics = $topic->get_topic_by_id($topic_id);
         $this->template->content = $view->render();
         if ($this->request->method() === Request::POST) {
-            if (!Security::check($this->request->param('id2')) {
+            if (!Security::check($this->request->param('id2'))) {
                 throw new Exception("Bad Token!");
             }
             $topic_title = $this->request->post('title');
