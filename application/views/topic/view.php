@@ -1,4 +1,4 @@
-
+<?php if (count($topics) >= 1): ?>
 <?php foreach ($topics as $topic): ?>
 <h3>
     <a href="<?php echo URL::site('category/index/'.$topic->category_id); ?>">
@@ -25,3 +25,6 @@
     </tr>
 </table>
 <?php endforeach; ?>
+<?php else: ?>
+    <h3>Topic with that ID do not exists!</h3>
+<?php endif; ?>

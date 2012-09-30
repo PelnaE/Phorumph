@@ -1,3 +1,4 @@
+<?php if (count($topics) >= 1): ?>
 <h3>Edit a topic</h3>
 <?php foreach ($topics as $topic): ?>
 <form action="<?php echo URL::site("topic/edit/".Request::current()->param('id')."/".Security::token()); ?>" method="post">
@@ -6,3 +7,6 @@
     <br /><input type="submit" value="Update" />
 </form>
 <?php endforeach; ?>
+<?php else: ?>
+    <h3>Topic with that ID do not exists.</h3>
+<?php endif; ?>
