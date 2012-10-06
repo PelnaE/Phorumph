@@ -49,6 +49,9 @@
 			If you do not have an account, <a href="<?php echo URL::site("register"); ?>">register it there</a>!
 		<?php endif; ?>
 	</header>
+    <?php if (Auth::is_user_signed_in()): ?>
+        <h3><a href="<?php echo URL::site('topic/new'); ?>">Start a new discussion.</a></h3>
+    <?php endif; ?>
 	<?php if (!isset($content)): ?>
 		<h2>No View is set</h2>
 		<p>Contact administrator.</p>
