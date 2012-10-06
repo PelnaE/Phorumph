@@ -53,5 +53,14 @@ CREATE TABLE `users` (
       PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+DROP TABLE IF EXISTS `replies`;
+CREATE TABLE `replies` (
+      `topic_id` int(11) NOT NULL,
+      `user_id` int(11) NOT NULL,
+      `reply_id` int(11) NOT NULL AUTO_INCREMENT,
+      `content` text NOT NULL,
+      PRIMARY KEY (`reply_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 -- 2012-09-22 16:18:17
