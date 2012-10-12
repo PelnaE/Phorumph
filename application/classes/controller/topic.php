@@ -85,5 +85,25 @@ class Controller_Topic extends Controller_Template
             $this->request->redirect('');
         }
     }
+    public function action_reply()
+    {
+        if (Auth::is_user_signed_in()) {
+            if (!Security::check($this->request->param('id'))) {
+                throw Exception("Bad token!");
+            }
+            $topic_id = $this->request->post('topic_id');
+            $user_id  = $this->request->post('user_id');
+            $content  = $this->request->post('content');
+            if (empty($topic_id) or empty($user_id) or empty($content)) {
+                throw new Exception("Topic ID, User ID or Content must not be empty!");
+            }
+            $reply      = new Model_Reply();
+            $send_reply = $reply->send($topic_id, $user_id, $content);
+            if (!$send_reply) {
+                throw new Exception("Fail with sending a reply!");
+            }
+            $this->request->redirect('topic/view/'.$topic_id);
+        }
+    }
 }
 
