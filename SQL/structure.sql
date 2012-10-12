@@ -59,6 +59,7 @@ CREATE TABLE `replies` (
       `user_id` int(11) NOT NULL,
       `reply_id` int(11) NOT NULL AUTO_INCREMENT,
       `content` text NOT NULL,
+      `date` text NOT NULL,
       PRIMARY KEY (`reply_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
