@@ -34,7 +34,10 @@
                 <img src="<?php echo $reply->picture; ?>" height="80px" />
             </td>
             <td valign="top">
-                <?php echo date('d.m.Y H:i:s', $reply->date); ?><br />
+            <?php echo date('d.m.Y H:i:s', $reply->date); ?> |
+            <?php if (Session::instance()->get('user_id') === $reply->user_id): ?>
+            <a href="<?php echo URL::site('topic/edit_reply/'.$reply->id) ?>">Edit a reply.</a>
+            <?php endif; ?><br />
                 <?php echo Darkmown::parse($reply->content); ?>
             _____
                 <?php echo Darkmown::parse($reply->signature); ?>
