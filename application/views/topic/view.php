@@ -24,10 +24,29 @@
         </td>
     </tr>
 </table>
+<h3>Replies:</h3>
+<?php if (count($replies) >= 1): ?>
+    <table width="40%" border="1px" cellspacing="1" cellpadding="5">
+    <?php foreach ($replies as $reply): ?>
+        <tr>
+            <td width="10%">
+                <?php echo $reply->username; ?>
+                <img src="<?php echo $reply->picture; ?>" height="80px" />
+            </td>
+            <td valign="top">
+                <?php echo date('d.m.Y H:i:s', $reply->date); ?><br />
+                <?php echo Darkmown::parse($reply->content); ?>
+            _____
+                <?php echo Darkmown::parse($reply->signature); ?>
+            </td>
+        </tr>
+    <?php endforeach ;?>
+    </table>
+<?php endif; ?>
 <h3>Reply to a topic:</h3>
 <form action="<?php echo URL::site('topic/reply/'.Security::token()); ?>" method="post">
     <input type="hidden" value="<?php echo $topic->topic_id; ?>" name="topic_id" />
-    <input type="hidden" value="<?php echo $topic->id; ?>" name="user_id" />
+    <input type="hidden" value="<?php echo Session::instance()->get('user_id'); ?>" name="user_id" />
     <textarea rows="10" cols="75" name="content"></textarea><br />
     <input type="submit" value="Reply" />
 </form>
