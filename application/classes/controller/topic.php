@@ -108,13 +108,14 @@ class Controller_Topic extends Controller_Template
             $this->request->redirect('topic/view/'.$topic_id);
         }
     }
+    // Coming soon...
     public function action_edit_reply()
     {
         if (Auth::is_user_signed_in()) {
             $view = View::factory('topic/edit_reply');
             $this->template->content = $view->render();
             if ($this->request->method() === Request::POST) {
-                if (!Security::check($this->request->param('id'))) {
+                if (!Security::check($this->request->param('id2'))) {
                     throw new Exception("Bad token!");
                 }
                 $content = $this->request->post('content');
