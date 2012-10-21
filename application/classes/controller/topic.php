@@ -108,5 +108,28 @@ class Controller_Topic extends Controller_Template
             $this->request->redirect('topic/view/'.$topic_id);
         }
     }
+    public function action_edit_reply()
+    {
+        if (Auth::is_user_signed_in()) {
+            $view = View::factory('topic/edit_reply');
+            $this->template->content = $view->render();
+            if ($this->request->method() === Request::POST) {
+                if (!Security::check($this->request->param('id'))) {
+                    throw new Exception("Bad token!");
+                }
+                $content = $this->request->post('content');
+                if (empty($content)) {
+                    throw new Exception("Content of your reply must not be empty!");
+                }
+                $reply = new Model_Reply();
+                $reply_id = $this->request->param('id');
+                $update_reply = $reply->update($content, $reply_id);
+                if (!$update_reply) {
+                    throw new Exception("Reply will not be updated");
+                }
+                $this->request->redirect('');
+            }
+        }
+    }
 }
 
