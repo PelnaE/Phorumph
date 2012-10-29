@@ -36,7 +36,7 @@
             <td valign="top">
             <?php echo date('d.m.Y H:i:s', $reply->date); ?> |
             <?php if (Session::instance()->get('user_id') === $reply->user_id): ?>
-            <a href="<?php echo URL::site('topic/edit_reply/'.$reply->id) ?>">Edit a reply.</a>
+            <a href="<?php echo URL::site('topic/edit_reply/'.$reply->reply_id) ?>">Edit a reply.</a>
             <?php endif; ?><br />
                 <?php echo Darkmown::parse($reply->content); ?>
             _____
