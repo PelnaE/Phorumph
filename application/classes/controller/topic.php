@@ -50,6 +50,8 @@ class Controller_Topic extends Controller_Template
         $view = View::factory('topic/view');
         $topic_id = $this->request->param('id');
         $topic    = new Model_Topic();
+        $reply    = new Model_Reply();
+        $view->replies = $reply->get($topic_id);
         $view->topics = $topic->get_topic_by_id($topic_id);
         $this->template->content = $view->render();
     }
@@ -79,10 +81,59 @@ class Controller_Topic extends Controller_Template
                 if (!$update_topic) {
                     throw new Exception("Error");
                 }
-                $this->request->redirect('');
+                $this->request->redirect('topic/view/'.$topic_id);
             }
         } else {
             $this->request->redirect('');
+        }
+    }
+    public function action_reply()
+    {
+        if (Auth::is_user_signed_in()) {
+            if (!Security::check($this->request->param('id'))) {
+                throw Exception("Bad token!");
+            }
+            $topic_id = $this->request->post('topic_id');
+            $user_id  = $this->request->post('user_id');
+            $content  = $this->request->post('content');
+            $date     = time();
+            if (empty($topic_id) or empty($user_id) or empty($content)) {
+                throw new Exception("Topic ID, User ID or Content must not be empty!");
+            }
+            $reply      = new Model_Reply();
+            $send_reply = $reply->send($topic_id, $user_id, $content, $date);
+            if (!$send_reply) {
+                throw new Exception("Fail with sending a reply!");
+            }
+            $this->request->redirect('topic/view/'.$topic_id);
+        }
+    }
+    // Coming soon...
+    public function action_edit_reply()
+    {
+        if (Auth::is_user_signed_in()) {
+            $reply_id = $this->request->param('id');
+            $reply    = new Model_Reply();
+            $view = View::factory('topic/edit_reply');
+            $view->replies           = $reply->get_reply($reply_id);
+            $this->template->content = $view->render();
+            if ($this->request->method() === Request::POST) {
+                if (!Security::check($this->request->param('id2'))) {
+                    throw new Exception("Bad token!");
+                }
+                $content = $this->request->post('content');
+                $topic_id = $this->request->post('topic_id'); //Topic id for last param from redirect.
+                if (empty($content)) {
+                    throw new Exception("Content of your reply must not be empty!");
+                }
+                $reply = new Model_Reply();
+                $reply_id = $this->request->param('id');
+                $update_reply = $reply->update($content, $reply_id);
+                if (!$update_reply) {
+                    throw new Exception("Reply will not be updated");
+                }
+                $this->request->redirect('topic/view/'.$topic_id);
+            }
         }
     }
 }
