@@ -44,5 +44,21 @@
 		</ul>
 
 	<?php endif; ?>
-
+<h3>My recent topics:</h3>
+<?php if (count($topics) >= 1): ?>
+    <?php foreach ($topics as $topic): ?>
+        <h4><?php echo HTML::chars($topic->title); ?></h4>
+        <?php echo Darkmown::parse($topic->content); ?>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>You do not have any topics there.</p>
+<?php endif; ?>
+<h3>My recent posts:</h3>
+<?php if (count($replies) >=1): ?>
+    <?php foreach($replies as $reply): ?>
+        <?php echo Darkmown::parse($reply->content); ?>
+    <?php endforeach; ?>
+<?php else: ?>
+    <p>You do not have any replies there.</p>
+<?php endif; ?>
 <?php endforeach; ?>

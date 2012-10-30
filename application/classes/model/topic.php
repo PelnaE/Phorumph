@@ -35,5 +35,15 @@ class Model_Topic extends Model
             ->where('topic_id', '=', $topic_id)
             ->execute();
     }
+    public function get_topics_by_user_id($user_id)
+    {
+        return DB::select()
+            ->from('topics')
+            ->where('author_id', '=', $user_id)
+            ->order_by('topic_id', 'DESC')
+            ->limit(5)
+            ->as_object()
+            ->execute();
+    }
 }
 

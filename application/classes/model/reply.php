@@ -33,5 +33,15 @@ class Model_Reply extends Model
             ->where('reply_id', '=', $reply_id)
             ->execute();
     }
+    public function get_replies_by_user_id($user_id)
+    {
+        return DB::select()
+            ->from('replies')
+            ->where('user_id', '=', $user_id)
+            ->limit(5)
+            ->order_by('reply_id', 'DESC')
+            ->as_object()
+            ->execute();
+    }
 }
 
