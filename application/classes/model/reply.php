@@ -18,5 +18,20 @@ class Model_Reply extends Model
             ->as_object()
             ->execute();
     }
+    public function get_reply($reply_id)
+    {
+        return DB::select()
+            ->from('replies')
+            ->where('reply_id', '=', $reply_id)
+            ->as_object()
+            ->execute();
+    }
+    public function update($content, $reply_id)
+    {
+        return DB::update('replies')
+            ->set(array('content' => $content))
+            ->where('reply_id', '=', $reply_id)
+            ->execute();
+    }
 }
 
