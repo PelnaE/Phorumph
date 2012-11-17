@@ -47,12 +47,16 @@
     </table>
 <?php endif; ?>
 <h3>Reply to a topic:</h3>
+<?php if (Auth::is_user_signed_in()): ?>
 <form action="<?php echo URL::site('topic/reply/'.Security::token()); ?>" method="post">
     <input type="hidden" value="<?php echo $topic->topic_id; ?>" name="topic_id" />
     <input type="hidden" value="<?php echo Session::instance()->get('user_id'); ?>" name="user_id" />
     <textarea rows="10" cols="75" name="content"></textarea><br />
     <input type="submit" value="Reply" />
 </form>
+<?php else: ?>
+    You can't reply to this topic, because you are a guest.
+<?php endif; ?>
 <?php endforeach; ?>
 <?php else: ?>
     <h3>Topic with that ID do not exists!</h3>
