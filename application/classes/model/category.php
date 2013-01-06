@@ -17,4 +17,10 @@ class Model_Category extends Model
             ->execute()
             ->get('name');
     }
+    public function create_category(array $data)
+    {
+        return DB::insert('categories', array_keys($data))
+        ->values(array_values($data))
+        ->execute();
+    }
 }
