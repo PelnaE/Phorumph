@@ -51,6 +51,9 @@
 	</header>
     <?php if (Auth::is_user_signed_in()): ?>
         <h3><a href="<?php echo URL::site('topic/new'); ?>">Start a new discussion.</a></h3>
+        <?php if($user->user_role == 5): ?>
+        	<h3><a href="<?php echo URL::site('dashboard'); ?>">Go to Dashboard</a></h3>
+        <?php endif; ?>
     <?php endif; ?>
 	<?php if (!isset($content)): ?>
 		<h2>No View is set</h2>
