@@ -1,8 +1,8 @@
 <?php defined('SYSPATH') or die ('No direct script access');
 
-class Model_User extends Model
+class Model_User extends ORM
 {
-	public function create(array $data)
+	public function create_user(array $data)
 	{
 		return DB::insert('users', array_keys($data))
 		->values(array_values($data))

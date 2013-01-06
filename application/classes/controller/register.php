@@ -31,7 +31,7 @@ class Controller_Register extends Controller_Template
 					'password' => $password,
 					'email'    => $email,
 					);
-				$create_user = $user->create($data);
+				$create_user = $user->create_user($data);
 
 				if (!$create_user) {
 					$this->template->content = $view->bind('errors', $this->true);

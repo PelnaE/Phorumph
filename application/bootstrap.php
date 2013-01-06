@@ -108,6 +108,7 @@ Kohana::modules(array(
 	'database'   => MODPATH.'database',
 	'email'      => MODPATH.'email',
 	'unittest'   => MODPATH.'unittest',
+	'orm'             => MODPATH.'orm',
 	));
 
 /**
