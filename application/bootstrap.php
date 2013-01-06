@@ -103,13 +103,13 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
-	'darkmown'   => MODPATH.'darkmown',
-	'pagination' => MODPATH.'pagination',
-	'database'   => MODPATH.'database',
-	'email'      => MODPATH.'email',
-	'unittest'   => MODPATH.'unittest',
-	'orm'             => MODPATH.'orm',
-	));
+    'darkmown' => MODPATH.'darkmown',
+    'pagination' => MODPATH.'pagination',
+    'database'   => MODPATH.'database',
+    'email'         => MODPATH.'email',
+    'unittest'     => MODPATH.'unittest',
+    'orm'           => MODPATH.'orm',
+    ));
 
 /**
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
