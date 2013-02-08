@@ -6,21 +6,23 @@ class Model_Category extends Model
 	{
 		return DB::select()
 		->from('categories')
+		->join('categories_access')
+		->on('categories.id', '=', 'categories_access.category_id')
 		->as_object()
 		->execute();
 	}
-    public function get_name($id)
-    {
-        return DB::select('name')
-            ->from('categories')
-            ->where('id', '=', $id)
-            ->execute()
-            ->get('name');
-    }
-    public function create_category(array $data)
-    {
-        return DB::insert('categories', array_keys($data))
-        ->values(array_values($data))
-        ->execute();
-    }
+	public function get_name($id)
+	{
+		return DB::select('name')
+		->from('categories')
+		->where('id', '=', $id)
+		->execute()
+		->get('name');
+	}
+	public function create_category(array $data)
+	{
+		return DB::insert('categories', array_keys($data))
+		->values(array_values($data))
+		->execute();
+	}
 }
