@@ -51,9 +51,11 @@
 	</header>
     <?php if (Auth::is_user_signed_in()): ?>
         <h3><a href="<?php echo URL::site('topic/new'); ?>">Start a new discussion.</a></h3>
-        <?php if($user->user_role == 5): ?>
+        <?php foreach ($users_levels as $user_level) : ?>
+        <?php if($user_level->group_id == 2): ?>
         	<h3><a href="<?php echo URL::site('dashboard'); ?>">Go to Dashboard</a></h3>
         <?php endif; ?>
+    <?php endforeach; ?>
     <?php endif; ?>
 	<?php if (!isset($content)): ?>
 		<h2>No View is set</h2>

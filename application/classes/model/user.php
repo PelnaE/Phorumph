@@ -103,4 +103,14 @@ class Model_User extends ORM
 		->where('id', '=', $id)
 		->execute();
 	}
+	public function get_level($user_id)
+	{
+		return DB::select()
+		->from('users')
+		->join('user_accesses')
+		->on('users.id', '=', 'user_accesses.user_id')
+		->where('users.id', '=', $user_id)
+		->as_object()
+		->execute();
+	}
 }
