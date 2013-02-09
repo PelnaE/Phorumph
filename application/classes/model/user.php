@@ -53,7 +53,9 @@ class Model_User extends ORM
 	{
 		return DB::select()
 		->from('users')
-		->where('id', '=', $user_id)
+		->join('user_accesses')
+		->on('user_accesses.user_id', '=', 'users.id')
+		->where('users.id', '=', $user_id)
 		->as_object()
 		->execute();
 	}

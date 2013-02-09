@@ -1,13 +1,15 @@
 <?php defined('SYSPATH') or die ('No direct script access');
 
-class Model_Category extends Model
+class Model_Category extends ORM
 {
 	public function get_all_categories()
 	{
 		return DB::select()
 		->from('categories')
+		->distinct('TRUE')
 		->join('categories_access')
-		->on('categories.id', '=', 'categories_access.category_id')
+		->on('categories_access.category_id', '=', 'categories.id')
+		->order_by('categories.id', 'DESC')
 		->as_object()
 		->execute();
 	}
