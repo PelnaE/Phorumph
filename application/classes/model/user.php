@@ -2,6 +2,11 @@
 
 class Model_User extends ORM
 {
+	protected $_table_name = 'users';
+
+	protected $_has_many = array(
+        		'roles'       => array('model' => 'role', 'through' => 'roles_users'),
+	);
 	public function create_user(array $data)
 	{
 		return DB::insert('users', array_keys($data))
@@ -53,8 +58,6 @@ class Model_User extends ORM
 	{
 		return DB::select()
 		->from('users')
-		->join('user_accesses')
-		->on('user_accesses.user_id', '=', 'users.id')
 		->where('users.id', '=', $user_id)
 		->as_object()
 		->execute();

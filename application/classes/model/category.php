@@ -7,8 +7,6 @@ class Model_Category extends ORM
 		return DB::select()
 		->from('categories')
 		->distinct('TRUE')
-		->join('categories_access')
-		->on('categories_access.category_id', '=', 'categories.id')
 		->order_by('categories.id', 'DESC')
 		->as_object()
 		->execute();

@@ -22,20 +22,14 @@ class Controller_Register extends Controller_Template
 			->rule('password', 'matches', array(':validation', 'password', 'password_again'));
 
 			if ($post->check()) {
-				$username = $this->request->post('username');
-				$password = crypt($this->request->post('password'), 'generatedsalt');
-				$email    = $this->request->post('email');
-				$user     = new Model_User();
-				$data     = array(
-					'username' => $username,
-					'password' => $password,
-					'email'    => $email,
-					);
-				$create_user = $user->create_user($data);
+				$user = new Model_User();
+				$post = $this->request->post();
+				$user->values($post)->save();
+				// atrod role 'login'
+				$loginRole = ORM::factory('role')->where('name', '=', 'login')->find();
+				// pieliek klāt 'login' role litotājam
+				$user->add('roles', $loginRole);
 
-				if (!$create_user) {
-					$this->template->content = $view->bind('errors', $this->true);
-				}
 
 				$this->template->content = $view->bind('successful', $this->true);
 			} else {

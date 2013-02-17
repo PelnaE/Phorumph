@@ -1,7 +1,6 @@
-<?php defined('SYSPATH') or die ('No direct script access');
+<?php
 
-class Auth
-{
+class Auth extends Kohana_Auth {
 	static function is_user_signed_in()
 	{
 		$session = Session::instance()->get('user_id');
