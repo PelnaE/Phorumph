@@ -8,12 +8,13 @@ class Controller_Login extends Controller_Template
 			throw new Exception("Bad token!");
 		}
 		$post = $this->request->post();
-		$auth = Auth::instance();var_dump($auth);exit;
-		$success = $auth->login($post['username'], $post['password']);
+		$auth = Auth::instance();
+		if ($this->request->post('cookie')) {
+			$success = $auth->login($post['username'], $post['password'], TRUE);
+		} else {
+			$success = $auth->login($post['username'], $post['password'], FALSE);
+		}
 		if ($success) {
-			if ($post['cookie']) {
-				Cookie::set('logged_with_cookies', true);
-			}
 			$this->request->redirect('/');
 		} else {
 			throw new Exception("login was unsuccessful!");

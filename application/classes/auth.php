@@ -1,6 +1,6 @@
 <?php
 
-class Auth extends Kohana_Auth {
+abstract class Auth extends Kohana_Auth {
 	static function is_user_signed_in()
 	{
 		$session = Session::instance()->get('user_id');

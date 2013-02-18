@@ -6,9 +6,6 @@
 		<th>Topics Count</th>
 	</tr>
 	<?php foreach($categories as $category): ?>
-	<?php foreach($levels as $level): ?>
-	<?php if($level->group_id === $category->group_id
-	or $level->access === $category->group_id): ?>
 		<tr>
 			<td>#<?php echo $category->id; ?></td>
 			<td>
@@ -19,7 +16,5 @@
 			</td>
 			<td><?php echo $category->topics_count; ?></td>
 		</tr>
-	<?php endif; ?>
-<?php endforeach; ?>
 	<?php endforeach; ?>
 </table>

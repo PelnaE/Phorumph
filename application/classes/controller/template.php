@@ -8,9 +8,9 @@ class Controller_Template extends Kohana_Controller_Template
 		$config = Kohana::$config->load('common');
 		$this->template = $config->template_name;
 		parent::before();
-		if (Session::instance()->get('user_id')) {
+		if (Auth::instance()->logged_in()) {
 			$user                  = new Model_User();
-			$this->template->users    = $user->get_data(Session::instance()->get('user_id'));
+			$this->template->users    = $user->get_data(Auth::instance()->get_user()->pk());
 			$this->template->users_levels       = $user->get_level(Session::instance()->get('user_id'));
 		}
 		$this->template->site_name = $config->site_name;

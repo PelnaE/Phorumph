@@ -7,9 +7,9 @@ class Controller_Home extends Controller_Template {
 		$view = View::factory('home');
 		$category = new Model_Category();
 		$view->categories = $category->get_all_categories();
-		$user_id = Session::instance()->get('user_id');
-		$user = new Model_User();
-		$view->levels =  $user->get_data($user_id);
+		if (Auth::instance()->logged_in()) {
+			$user_id = Auth::instance()->get_user()->pk();
+		}
 		$this->template->content = $view->render();
 	}
 } // End Welcome

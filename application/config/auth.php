@@ -4,7 +4,7 @@ return array(
 
 	'driver'       => 'ORM',
 	'hash_method'  => 'sha256',
-	'hash_key'     => NULL,
+	'hash_key'     => 'pam-ram-45-32-d4-6g',
 	'lifetime'     => 1209600,
 	'session_type' => Session::$default,
 	'session_key'  => 'auth_user',

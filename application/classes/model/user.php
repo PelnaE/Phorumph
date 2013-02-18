@@ -1,18 +1,12 @@
 <?php defined('SYSPATH') or die ('No direct script access');
 
-class Model_User extends ORM
+class Model_User extends Model_Auth_User
 {
 	protected $_table_name = 'users';
 
 	protected $_has_many = array(
         		'roles'       => array('model' => 'role', 'through' => 'roles_users'),
 	);
-	public function create_user(array $data)
-	{
-		return DB::insert('users', array_keys($data))
-		->values(array_values($data))
-		->execute();
-	}
 	static function is_username_taked($username)
 	{
 		return ! DB::select(array(DB::expr('COUNT(username)'), 'total'))
@@ -112,8 +106,6 @@ class Model_User extends ORM
 	{
 		return DB::select()
 		->from('users')
-		->join('user_accesses')
-		->on('users.id', '=', 'user_accesses.user_id')
 		->where('users.id', '=', $user_id)
 		->as_object()
 		->execute();
