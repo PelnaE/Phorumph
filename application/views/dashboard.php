@@ -1,6 +1,6 @@
 <h2>Dashboard</h2>
 	<ul>
-		<li>Create a category</li>
-		<li>List of categories</li>
+		<li><a href="<?php echo URL::site('dashboard/categories/create'); ?>">Create a category</a></li>
+		<li><a href="<?php echo URL::site('dashboard/categories/list'); ?>">List of categories</a></li>
 		<li>Manage members</li>
 	</ul>

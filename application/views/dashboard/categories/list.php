@@ -1,4 +1,7 @@
-<h3>List of Categories</h3>
+<h3>
+	<a href="<?php echo URL::site('dashboard'); ?>">Dashboard</a> &mdash;
+	List of Categories
+</h3>
 <table>
 	<tr>
 		<th>#</th>
