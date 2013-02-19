@@ -102,7 +102,7 @@ class Controller_Profile extends Controller_Template
         $reply = new Model_Reply();
         $view->replies = $reply->get_replies_by_user_id(Session::instance()->get('user_id'));
         $view->topics = $topic->get_topics_by_user_id(Session::instance()->get('user_id'));
-		$view->users = $user->get_data($user_id);
+		$view->user = $user->where('id', '=', Auth::instance()->get_user()->pk())->find();
 		$this->template->content = $view->render();
 	}
 }
