@@ -16,28 +16,25 @@ class Controller_Dashboard_Categories extends Controller_Template
 			$name                  = $this->request->post('name');
 			$description        = $this->request->post('description');
 			$user_role            = $this->request->post('user_role');
-			$moderator_role = $this->request->post('moderator_role');
 			$admin_role         = $this->request->post('admin_role');
 
 			if (
 				empty($name) and
-				empty($description) and
-				empty($user_role) and
-				empty($moderator_role) and
-				empty($admin_role)
+				empty($description)
 				)
 			{
 				throw new Exception("Please, correct input data!");
 			}
 			$categories = new Model_Category();
-			$data          = array(
-				'name' => $name,
-				'description' => $description,
-				'user_role'     => $user_role,
-				'moderator_role' => $moderator_role,
-				'admin_role'       => $admin_role,
-				);
-			$create_category = $categories->create_category($data);
+			$create_category = $categories->values($this->request->post())->save();
+			if ($user_role) {
+				$loginRole = ORM::factory('role')->where('name', '=', 'login')->find();
+				$category->add('roles', $loginRole);
+			}
+			if ($admin_role) {
+				$adminRole = ORM::factory('role')->where('name', '=', 'admin')->find();
+				$categories->add('roles', $adminRole);
+			}
 			if (!$create_category) {
 				throw new Exception("Error with creating a category!");
 			}

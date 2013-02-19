@@ -4,10 +4,10 @@ class Controller_Dashboard extends Controller_Template
 {
 	public function action_index()
 	{
-		if (Auth::is_user_signed_in()) {
+		if (Auth::instance()->logged_in()) {
 			$view = View::factory('dashboard');
 			$view->user = ORM::factory('User')
-			->where('id', '=', Session::instance()->get('user_id'))
+			->where('id', '=', Auth::instance()->get_user()->pk())
 			->find();
 			$this->template->content = $view->render();
 		} else {

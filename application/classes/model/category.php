@@ -2,6 +2,11 @@
 
 class Model_Category extends ORM
 {
+	protected $_table_name = 'categories';
+
+	protected $_has_many = array(
+        		'roles'       => array('model' => 'role', 'through' => 'roles_categories'),
+	);
 	public function get_all_categories()
 	{
 		return DB::select()
