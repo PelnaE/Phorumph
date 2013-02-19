@@ -13,6 +13,7 @@ class Controller_Dashboard_Categories extends Controller_Template
 			{
 				throw new Exception("Bad token!");
 			}
+
 			$name                  = $this->request->post('name');
 			$description        = $this->request->post('description');
 			$user_role            = $this->request->post('user_role');
@@ -29,7 +30,7 @@ class Controller_Dashboard_Categories extends Controller_Template
 			$create_category = $categories->values($this->request->post())->save();
 			if ($user_role) {
 				$loginRole = ORM::factory('role')->where('name', '=', 'login')->find();
-				$category->add('roles', $loginRole);
+				$categories->add('roles', $loginRole);
 			}
 			if ($admin_role) {
 				$adminRole = ORM::factory('role')->where('name', '=', 'admin')->find();
@@ -40,5 +41,12 @@ class Controller_Dashboard_Categories extends Controller_Template
 			}
 			$this->request->redirect('dashboard/categories/list');
 		}
+	}
+
+	public function action_list()
+	{
+		$view = View::factory('dashboard/categories/list');
+		$view->categories = ORM::factory('category')->order_by('id', 'DESC')->find_all();
+		$this->template->content = $view->render();
 	}
 }
