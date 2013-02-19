@@ -12,6 +12,8 @@ class Model_Category extends ORM
 		return DB::select()
 		->from('categories')
 		->distinct('TRUE')
+		->join('roles_categories')
+		->on('roles_categories.category_id', '=', 'categories.id')
 		->order_by('categories.id', 'DESC')
 		->as_object()
 		->execute();
