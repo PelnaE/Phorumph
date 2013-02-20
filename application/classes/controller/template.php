@@ -12,7 +12,9 @@ class Controller_Template extends Kohana_Controller_Template
 			$user                  = new Model_User();
 			$this->template->header = View::factory('profile/header')
 			->set('users', $user->where('id', '=', Auth::instance()->get_user()->pk())->find())
-			->set('users_levels', $user->get_level(Session::instance()->get('user_id')));
+			->set('users_levels', $user->get_level(Auth::instance()->get_user()->pk()));
+		} else {
+			$this->template->header = View::factory('login');
 		}
 		$this->template->site_name = $config->site_name;
 	}

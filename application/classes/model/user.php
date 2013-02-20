@@ -109,6 +109,8 @@ class Model_User extends Model_Auth_User
 	{
 		return DB::select()
 		->from('users')
+		->join('roles_users')
+		->on('roles_users.user_id', '=', 'users.id')
 		->where('users.id', '=', $user_id)
 		->as_object()
 		->execute();
