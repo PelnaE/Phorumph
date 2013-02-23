@@ -4,11 +4,16 @@ class Controller_Topic extends Controller_Template
 {
     public function action_new()
     {
-        if (Auth::is_user_signed_in()) {
+        if (Auth::instance()->logged_in()) {
             $view = View::factory('topic/new');
             $category = new Model_Category();
             $category_id = $this->request->param('id');
             $view->categories = $category->get_all_categories();
+            $user_id = Auth::instance()->get_user()->pk();
+            $users = ORM::factory('User')->get_data($user_id);
+            foreach ($users as $user) {
+                $view->role_id = $user->role_id;
+            }
             $this->template->content = $view->render();
             if ($this->request->method() === Request::POST) {
                 if (!Security::check($this->request->param('id'))) {
@@ -16,7 +21,7 @@ class Controller_Topic extends Controller_Template
                 }
                 $title = $this->request->post('title');
                 $category_id = $this->request->post('category_id');
-                $author = Session::instance()->get('user_id');
+                $author = $user_id;
                 $content = $this->request->post('content');
                 if (
                     empty($title) or
