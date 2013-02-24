@@ -20,6 +20,9 @@ class Controller_Dashboard_Users extends Controller_Template
 		$this->template->content = $view->render();
 
 		if ($this->request->method() === Request::POST) {
+			if (!Security::check($this->request->param('id2'))) {
+				throw new Exception('Bad token!');
+			}
 			$post = Validation::factory($this->request->post())
 			->rule('username', 'not_empty');
 
