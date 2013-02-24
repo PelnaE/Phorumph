@@ -16,6 +16,14 @@ Today is
 
 Or, simpler - <?php echo date('d.m.Y H:i:s T', time()); ?><br />
 
+<?php if ($users->picture): ?>
+	<a href="<?php echo URL::site('profile/delete_avatar/'.Security::token()); ?>">
+		Delete Avatar
+	</a>
+	
+	|
+<?php endif; ?>
+
 <a href="<?php echo URL::site('profile/upload_avatar'); ?>">
 	Upload avatar
 </a>

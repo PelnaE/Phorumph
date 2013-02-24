@@ -63,11 +63,11 @@ class Controller_Profile extends Controller_Template
 			throw new Exception("Bad token!");
 		}
 		$user = new Model_User();
-		$delete_avatar = $user->delete_avatar(Session::instance()->get('user_id'));
+		$delete_avatar = $user->delete_avatar(Auth::instance()->get_user()->pk());
 		if (!$delete_avatar) {
 			throw new Exception("Error with deleting avatar.");
 		}
-		$this->request->redirect('profile/view/'. Session::instance()->get('user_id'));
+		$this->request->redirect('profile/view/'.Auth::instance()->get_user()->pk());
 	}
 
 	public function action_change_signature()
