@@ -3,20 +3,9 @@
 <head>
 	<title><?php echo $site_name; ?></title>
 	<meta charset="UTF-8" />
-	<style type="text/css">
-		footer {
-			clear: both;
-		}
-		header ul
-		{
-			clear: both;
-		}
-		header p
-		{
-			padding:0;
-			margin: 0;
-		}
-	</style>
+	<?php foreach ($stylesheets as $stylesheet) : ?>
+		<link rel="stylesheet" href="<?php echo URL::site('assets/stylesheets/'.$stylesheet.'.css'); ?>" />
+	<?php endforeach; ?>
 </head>
 <body>
 

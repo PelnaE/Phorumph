@@ -16,6 +16,7 @@ class Controller_Template extends Kohana_Controller_Template
 		} else {
 			$this->template->header = View::factory('login');
 		}
+		$this->template->stylesheets = $config->stylesheets;
 		$this->template->site_name = $config->site_name;
 	}
 }

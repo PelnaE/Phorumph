@@ -3,4 +3,5 @@
 return array(
 	'template_name' => 'theme/default',
 	'site_name'     => 'Phorumph',
+	'stylesheets'   => array('default'),
 	);
