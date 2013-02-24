@@ -16,6 +16,12 @@ Today is
 
 Or, simpler - <?php echo date('d.m.Y H:i:s T', time()); ?><br />
 
+<a href="<?php echo URL::site('profile/upload_avatar'); ?>">
+	Upload avatar
+</a>
+
+|
+
 <a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">
 	Logout
 </a>
