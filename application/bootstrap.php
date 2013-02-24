@@ -130,6 +130,13 @@ Route::set('dashboard/categories', 'dashboard/categories(/<action>(/<id>(/<id2>(
         'action'     => 'create',
     ));
 
+Route::set('dashboard/users', 'dashboard/users(/<action>(/<id>(/<id2>(/<id3>(/<id4>)))))')
+    ->defaults(array(
+        'directory' => 'dashboard',
+        'controller' => 'users',
+        'action'     => 'list',
+    ));
+
 Route::set('default', '(<controller>(/<action>(/<id>(/<id2>(/<id3>(/<id4>(/<id5>(/<id6>))))))))')
     ->defaults(array(
         'controller' => 'home',
