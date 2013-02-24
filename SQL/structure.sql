@@ -55,8 +55,8 @@ CREATE TABLE `roles_categories` (
   `role_id` int(11) unsigned NOT NULL,
   KEY `role_id` (`role_id`),
   KEY `category_id` (`category_id`),
-  CONSTRAINT `roles_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
-  CONSTRAINT `roles_categories_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
+  CONSTRAINT `roles_categories_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`),
+  CONSTRAINT `roles_categories_ibfk_2` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 DROP TABLE IF EXISTS `roles_users`;
@@ -79,7 +79,6 @@ CREATE TABLE `topics` (
   `content` text NOT NULL,
   PRIMARY KEY (`topic_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
 
 DROP TABLE IF EXISTS `user_tokens`;
 CREATE TABLE `user_tokens` (
@@ -104,6 +103,8 @@ CREATE TABLE `users` (
   `email` varchar(254) NOT NULL,
   `username` varchar(32) NOT NULL DEFAULT '',
   `password` varchar(64) NOT NULL,
+  `picture` text NOT NULL,
+  `signature` text NOT NULL,
   `logins` int(10) unsigned NOT NULL DEFAULT '0',
   `last_login` int(10) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
@@ -111,4 +112,4 @@ CREATE TABLE `users` (
   UNIQUE KEY `uniq_email` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 2013-02-19 19:00:47
+-- 2013-02-24 16:17:44
