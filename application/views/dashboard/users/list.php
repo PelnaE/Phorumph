@@ -1,7 +1,7 @@
-<h3>
+<h2>
 	<a href="<?php echo URL::site('dashboard'); ?>">Dashboard</a> &mdash;
 	List of Users
-</h3>
+</h2>
 <table>
 	<tr>
 		<th>ID</th>
@@ -17,7 +17,15 @@
 		<?php else: ?>
 			<td>No User Picture</td>
 		<?php endif; ?>
-		<td><?php echo $user->username; ?></td>
+		<td>
+			<?php if (Auth::instance()->get_user()->pk() !== $user->id): ?>
+				<a href="<?php echo URL::site('dashboard/users/change_username/'.$user->id) ;?>">
+					<?php echo $user->username; ?>
+				</a>
+			<?php else: ?>
+				<?php echo $user->username; ?>
+			<?php endif; ?>
+		</td>
 		<td><?php echo $user->email; ?></td>
 	</tr>
 	<?php endforeach; ?>
