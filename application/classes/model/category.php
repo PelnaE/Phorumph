@@ -18,6 +18,17 @@ class Model_Category extends ORM
 		->as_object()
 		->execute();
 	}
+    public function get_category($id)
+    {
+        return DB::select()
+        ->from('categories')
+        ->distinct('TRUE')
+        ->join('roles_categories')
+        ->on('categories.id', '=', 'roles_categories.category_id')
+        ->where('categories.id', '=', $id)
+        ->as_object()
+        ->execute();
+    }
 	public function get_name($id)
 	{
 		return DB::select('name')

@@ -49,4 +49,12 @@ class Controller_Dashboard_Categories extends Controller_Template
 		$view->categories = ORM::factory('category')->order_by('id', 'DESC')->find_all();
 		$this->template->content = $view->render();
 	}
+    public function action_edit()
+    {
+        $view = View::factory('dashboard/categories/edit');
+        $category_id = $this->request->param('id');
+        $view->categories = ORM::factory('category')
+        ->get_category($category_id);
+        $this->template->content = $view->render();
+    }
 }
