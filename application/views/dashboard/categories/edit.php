@@ -29,5 +29,21 @@
             <?php endif; ?>
         </td>
     </tr>
+    <tr>
+        <td>Admin role</td>
+        <td>
+            <?php if ($category->role_id === 2): ?>
+                <input type="checkbox" name="admin_role" checked />
+            <?php else: ?>
+                <input type="checkbox" name="admin_role" />
+            <?php endif; ?>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td>
+            <input type="submit" value="Proceed" />
+        </td>
+    </tr>
 </table>
 <?php endforeach; ?>
