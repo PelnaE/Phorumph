@@ -41,7 +41,7 @@ class Controller_Profile extends Controller_Template
 			if (!Security::check($this->request->param('id'))) {
 				throw new Exception("Bad token!");
 			}
-			$user_id = Session::instance()->get('user_id');
+			$user_id = Auth::instance()->get_user()->pk();
 			$image = Validation::factory($_FILES)
 			->rule('image', 'Upload::not_empty')
 			->rule('image', 'Upload::type', array(':value', array('jpg', 'png', 'gif')));
@@ -63,11 +63,11 @@ class Controller_Profile extends Controller_Template
 			throw new Exception("Bad token!");
 		}
 		$user = new Model_User();
-		$delete_avatar = $user->delete_avatar(Session::instance()->get('user_id'));
+		$delete_avatar = $user->delete_avatar(Auth::instance()->get_user()->pk());
 		if (!$delete_avatar) {
 			throw new Exception("Error with deleting avatar.");
 		}
-		$this->request->redirect('profile/view/'. Session::instance()->get('user_id'));
+		$this->request->redirect('profile/view/'.Auth::instance()->get_user()->pk());
 	}
 
 	public function action_change_signature()
@@ -98,11 +98,11 @@ class Controller_Profile extends Controller_Template
 		}
 		$user = new Model_User();
 		$view = View::factory('profile/view');
-        $topic = new Model_Topic();
-        $reply = new Model_Reply();
-        $view->replies = $reply->get_replies_by_user_id(Session::instance()->get('user_id'));
-        $view->topics = $topic->get_topics_by_user_id(Session::instance()->get('user_id'));
-		$view->users = $user->get_data($user_id);
+		$topic = new Model_Topic();
+		$reply = new Model_Reply();
+		$view->replies = $reply->get_replies_by_user_id(Session::instance()->get('user_id'));
+		$view->topics = $topic->get_topics_by_user_id(Session::instance()->get('user_id'));
+		$view->user = $user->where('id', '=', Auth::instance()->get_user()->pk())->find();
 		$this->template->content = $view->render();
 	}
 }

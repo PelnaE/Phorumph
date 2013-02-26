@@ -35,7 +35,7 @@
             </td>
             <td valign="top">
             <?php echo date('d.m.Y H:i:s', $reply->date); ?> |
-            <?php if (Session::instance()->get('user_id') === $reply->user_id): ?>
+            <?php if (Auth::instance()->get_user()->pk() === $reply->user_id): ?>
             <a href="<?php echo URL::site('topic/edit_reply/'.$reply->reply_id) ?>">Edit a reply.</a>
             <?php endif; ?><br />
                 <?php echo Darkmown::parse($reply->content); ?>
@@ -47,10 +47,9 @@
     </table>
 <?php endif; ?>
 <h3>Reply to a topic:</h3>
-<?php if (Auth::is_user_signed_in()): ?>
+<?php if (Auth::instance()->logged_in()): ?>
 <form action="<?php echo URL::site('topic/reply/'.Security::token()); ?>" method="post">
     <input type="hidden" value="<?php echo $topic->topic_id; ?>" name="topic_id" />
-    <input type="hidden" value="<?php echo Session::instance()->get('user_id'); ?>" name="user_id" />
     <textarea rows="10" cols="75" name="content"></textarea><br />
     <input type="submit" value="Reply" />
 </form>

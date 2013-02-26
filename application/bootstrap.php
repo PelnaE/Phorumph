@@ -103,6 +103,7 @@ Kohana::$config->attach(new Config_File);
  * Enable modules. Modules are referenced by a relative or absolute path.
  */
 Kohana::modules(array(
+    'auth'           => MODPATH.'auth',
     'darkmown' => MODPATH.'darkmown',
     'pagination' => MODPATH.'pagination',
     'database'   => MODPATH.'database',
@@ -115,8 +116,29 @@ Kohana::modules(array(
  * Set the routes. Each route must have a minimum of a name, a URI and a set of
  * defaults for the URI.
  */
+
+Route::set('dashboard', 'dashboard')
+            ->defaults(array(
+                        'controller' => 'dashboard',
+                        'action'      => 'index',
+            ));
+
+Route::set('dashboard/categories', 'dashboard/categories(/<action>(/<id>(/<id2>(/<id3>(/<id4>)))))')
+    ->defaults(array(
+        'directory'  => 'dashboard',
+        'controller' => 'categories',
+        'action'     => 'create',
+    ));
+
+Route::set('dashboard/users', 'dashboard/users(/<action>(/<id>(/<id2>(/<id3>(/<id4>)))))')
+    ->defaults(array(
+        'directory' => 'dashboard',
+        'controller' => 'users',
+        'action'     => 'list',
+    ));
+
 Route::set('default', '(<controller>(/<action>(/<id>(/<id2>(/<id3>(/<id4>(/<id5>(/<id6>))))))))')
-	->defaults(array(
-		'controller' => 'home',
-		'action'     => 'index',
-	));
+    ->defaults(array(
+        'controller' => 'home',
+        'action'     => 'index',
+    ));
