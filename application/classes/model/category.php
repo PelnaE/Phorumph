@@ -25,6 +25,9 @@ class Model_Category extends ORM
         ->distinct('TRUE')
         ->join('roles_categories')
         ->on('categories.id', '=', 'roles_categories.category_id')
+        
+        ->group_by('roles_categories.category_id') // !!!!!!!!!!!!!!!!!!
+        
         ->where('categories.id', '=', $id)
         ->as_object()
         ->execute();
