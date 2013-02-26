@@ -22,9 +22,8 @@ class Model_Category extends ORM
     {
         return DB::select()
         ->from('categories')
-        ->distinct('TRUE')
         ->join('roles_categories')
-        ->on('categories.id', '=', 'roles_categories.category_id')        
+        ->on('roles_categories.category_id', '=', 'categories.id')        
         ->group_by('roles_categories.category_id')       
         ->where('categories.id', '=', $id)
         ->as_object()
