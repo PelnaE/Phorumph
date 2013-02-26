@@ -22,7 +22,7 @@
     <tr>
         <td>Login role</td>
         <td>
-            <?php if ($category->role_id === 1): ?>
+            <?php if ($category->role_id == 1): ?>
                 <input type="checkbox" name="login_role" checked="checked" />
             <?php else: ?>
                 <input type="checkbox" name="login_role" />
@@ -32,7 +32,7 @@
     <tr>
         <td>Admin role</td>
         <td>
-            <?php if ($category->role_id === 2): ?>
+            <?php if ($category->role_id == 2): ?>
                 <input type="checkbox" name="admin_role" checked="checked" />
             <?php else: ?>
                 <input type="checkbox" name="admin_role" />
