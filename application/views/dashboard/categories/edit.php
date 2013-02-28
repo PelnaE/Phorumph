@@ -25,7 +25,8 @@ Edit a Category </h3>
                 <td>Admin role</td>
                 <td><input type="checkbox" name="admin_role" /></td>
             </tr>
-        <?php elseif ($category_role->role_id != 1 && $category_role->role_id == 2): ?>
+        <?php endif; ?>
+        <?php if ($category_role->role_id != 1 && $category_role->role_id == 2): ?>
             <tr>
                 <td>Login role</td>
                 <td><input type="checkbox" name="login_role" /></td>
@@ -34,7 +35,8 @@ Edit a Category </h3>
                 <td>Admin role</td>
                 <td><input type="checkbox" name="admin_role" checked="checked" /></td>
             </tr>
-        <?php elseif ($category_role->role_id == 1 && $category_role->role_id == 2): ?>
+        <?php endif; ?>
+        <?php if ($category_role->role_id == 1 && $category_role->role_id == 2): ?>
             <tr>
                 <td>Login role</td>
                 <td><input type="checkbox" name="admin_role" checked="checked"/></td>
