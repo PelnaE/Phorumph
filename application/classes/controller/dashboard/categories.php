@@ -57,6 +57,7 @@ class Controller_Dashboard_Categories extends Controller_Template
         ->get_category($category_id);
         $view->categories_roles = ORM::factory('category')
         ->get_category_roles($category_id);
+        $view->roles = ORM::factory('role')->find_all();
         $this->template->content = $view->render();
     }
 }

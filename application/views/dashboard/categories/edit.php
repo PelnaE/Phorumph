@@ -15,8 +15,9 @@ Edit a Category </h3>
         </td>
     </tr>
     <?php endforeach; ?>
+    <?php echo $roles->id; ?>
     <?php foreach ($categories_roles as $category_role): ?>
-        <?php if ($category_role->role_id == 1 && $category_role->role_id != 2): ?>
+        <?php if ($category_role->role_id == $roles->id && $category_role->role_id != $roles->id): ?>
             <tr>
                 <td>Login role</td>
                 <td><input type="checkbox" name="login_role" checked="checked" /></td>
@@ -26,7 +27,7 @@ Edit a Category </h3>
                 <td><input type="checkbox" name="admin_role" /></td>
             </tr>
         <?php endif; ?>
-        <?php if ($category_role->role_id != 1 && $category_role->role_id == 2): ?>
+        <?php if ($category_role->role_id != $roles->id && $category_role->role_id == $roles->id): ?>
             <tr>
                 <td>Login role</td>
                 <td><input type="checkbox" name="login_role" /></td>
@@ -36,7 +37,7 @@ Edit a Category </h3>
                 <td><input type="checkbox" name="admin_role" checked="checked" /></td>
             </tr>
         <?php endif; ?>
-        <?php if ($category_role->role_id == 1 && $category_role->role_id == 2): ?>
+        <?php if ($category_role->id == $roles->role_id && $category_role->role_id == $roles->id): ?>
             <tr>
                 <td>Login role</td>
                 <td><input type="checkbox" name="admin_role" checked="checked"/></td>
