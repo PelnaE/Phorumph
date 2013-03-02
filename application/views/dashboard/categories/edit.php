@@ -1,11 +1,12 @@
 <h3><a href="<?php echo URL::site('dashboard'); ?>"> Dashboard </a> &mdash; <a href="<?php echo URL::site('dashboard/categories/list'); ?>"> List of Categories </a> &mdash;
 Edit a Category </h3>
-<?php foreach ($categories as $category): ?>
+<form action="<?php echo URL::site('dashboard/categories/edit/'.$category_id.'/'.Security::token()); ?>"
+    method="post">
 <table>
     <tr>
         <td>Name of category</td>
         <td>
-        <input type="text" name="title" value="<?php echo $category -> name; ?>" />
+        <input type="text" name="name" value="<?php echo $category -> name; ?>" />
         </td>
     </tr>
     <tr>
@@ -14,40 +15,18 @@ Edit a Category </h3>
         <input type="text" name="description" value="<?php echo $category -> description; ?>" />
         </td>
     </tr>
-    <?php endforeach; ?>
-    <?php echo $roles->id; ?>
-    <?php foreach ($categories_roles as $category_role): ?>
-        <?php if ($category_role->role_id == $roles->id && $category_role->role_id != $roles->id): ?>
-            <tr>
-                <td>Login role</td>
-                <td><input type="checkbox" name="login_role" checked="checked" /></td>
-            </tr>
-            <tr>
-                <td>Admin role</td>
-                <td><input type="checkbox" name="admin_role" /></td>
-            </tr>
-        <?php endif; ?>
-        <?php if ($category_role->role_id != $roles->id && $category_role->role_id == $roles->id): ?>
-            <tr>
-                <td>Login role</td>
-                <td><input type="checkbox" name="login_role" /></td>
-            </tr>
-            <tr>
-                <td>Admin role</td>
-                <td><input type="checkbox" name="admin_role" checked="checked" /></td>
-            </tr>
-        <?php endif; ?>
-        <?php if ($category_role->id == $roles->role_id && $category_role->role_id == $roles->id): ?>
-            <tr>
-                <td>Login role</td>
-                <td><input type="checkbox" name="admin_role" checked="checked"/></td>
-            </tr>
-            <tr>
-                <td>Admin role</td>
-                <td><input type="checkbox" name="admin_role" checked="checked"/></td>
-            </tr>
-        <?php endif; ?>
-        <?php endforeach; ?>
+    <?php foreach ($roles as $role): ?>
+        <tr>
+            <td><?php echo $role->name; ?></td>
+            <td>
+                <input type="checkbox" name="<?php echo $role->name; ?>" value="<?php echo $role->id; ?>"
+                <?php if (in_array($role->id, array_values($categories_roles))): ?>
+                    checked="checked"
+                <?php endif; ?>
+                />
+            </td>
+        </tr>
+   <?php endforeach; ?>
         <tr>
         <td></td>
         <td>
@@ -55,3 +34,4 @@ Edit a Category </h3>
         </td>
     </tr>
 </table>
+</form>
