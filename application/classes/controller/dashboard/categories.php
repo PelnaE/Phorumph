@@ -57,14 +57,14 @@ class Controller_Dashboard_Categories extends Controller_Template
         $view->category = ORM::factory('category', $category_id);
         $categories_roles = ORM::factory('roles_category')
         ->where('category_id', '=', $category_id)->find_all()->as_array();
-        foreach ($categories_roles as $role) 
+        foreach ($categories_roles as $role)
         {
             $category_roles[] = $role->role_id;
         }
         $view->categories_roles = $category_roles;
         $view->roles = ORM::factory('role')->find_all();
         $this->template->content = $view->render();
-        
+
         if ($this->request->method() === Request::POST) {
             $category_name = $this->request->post('name');
             $category_description = $this->request->post('description');
@@ -74,16 +74,17 @@ class Controller_Dashboard_Categories extends Controller_Template
             $category->name = $category_name;
             $category->description = $category_description;
             $category->save();
+            $roles_category = ORM::factory('roles_category');
             $roles = ORM::factory('role')->find_all();
             foreach ($roles as $role) {
                 if (!in_array($role->id, array_values($category_roles))) {
                     $category->add('roles', $role->id);
                 }
-                if (empty($login_role)) {
-                    $category->delete('roles', 1);
+                if (isset($login_role)) {
+                    $roles_category->delete_category($category_id, 1);
                 }
-                if (empty($admin_role)) {
-                    $category->delete('roles', 2);
+                if (isset($admin_role)) {
+                    $roles_category->delete_category($category_id, 2);
                 }
             }
             $this->request->redirect('dashboard/categories/list');
