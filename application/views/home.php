@@ -6,10 +6,19 @@
 		<th>Topics Count</th>
 	</tr>
 	<?php foreach($categories as $category): ?>
-<?php if (Auth::instance()->logged_in('login')): ?>
+<?php foreach ($roles as $role): ?>
+<?php if (Auth::instance()->logged_in($role->name)): ?>
 <tr>
+<td>
+<?php echo $category->id; ?>
+</td>
+<td>
 <?php echo $category->name; ?>
+</td>
+<td>
+</td>
 </tr>
 <?php endif; ?>
+<?php endforeach; ?>
 	<?php endforeach; ?>
 </table>

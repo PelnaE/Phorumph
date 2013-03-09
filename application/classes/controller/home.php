@@ -7,6 +7,7 @@ class Controller_Home extends Controller_Template {
 		$view = View::factory('home');
 		$category = new Model_Category();
 		$view->categories = $category->get_all_categories();
+        $view->roles = ORM::factory('role')->find_all();
 		if (Auth::instance()->logged_in()) {
 			$user_id = Auth::instance()->get_user()->pk();
 			$users = ORM::factory('User')->get_data($user_id);
