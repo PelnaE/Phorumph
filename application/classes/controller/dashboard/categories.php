@@ -5,6 +5,7 @@ class Controller_Dashboard_Categories extends Controller_Template
 	public function action_create()
 	{
 		$view = View::factory('dashboard/categories/create');
+        $view->roles = ORM::factory('role')->find_all();
 		$this->template->content = $view->render();
 
 		if ($this->request->method() === Request::POST)
@@ -14,10 +15,9 @@ class Controller_Dashboard_Categories extends Controller_Template
 				throw new Exception("Bad token!");
 			}
 
-			$name                  = $this->request->post('name');
-			$description        = $this->request->post('description');
-			$user_role            = $this->request->post('user_role');
-			$admin_role         = $this->request->post('admin_role');
+            $name        = $this->request->post('name');
+			$description = $this->request->post('description');
+			$role_id     = $this->request->post('role_id');
 
 			if (
 				empty($name) and
@@ -28,14 +28,6 @@ class Controller_Dashboard_Categories extends Controller_Template
 			}
 			$categories = new Model_Category();
 			$create_category = $categories->values($this->request->post())->save();
-			if ($user_role) {
-				$loginRole = ORM::factory('role')->where('name', '=', 'login')->find();
-				$categories->add('roles', $loginRole);
-			}
-			if ($admin_role) {
-				$adminRole = ORM::factory('role')->where('name', '=', 'admin')->find();
-				$categories->add('roles', $adminRole);
-			}
 			if (!$create_category) {
 				throw new Exception("Error with creating a category!");
 			}
@@ -76,17 +68,9 @@ class Controller_Dashboard_Categories extends Controller_Template
             $category->save();
             $roles_category = ORM::factory('roles_category');
             $roles = ORM::factory('role')->find_all();
-            foreach ($roles as $role) {
-                if (!in_array($role->id, array_values($category_roles))) {
-                    $category->add('roles', $role->id);
-                }
-                if (isset($login_role)) {
-                    $roles_category->delete_category($category_id, 1);
-                }
-                if (isset($admin_role)) {
-                    $roles_category->delete_category($category_id, 2);
-                }
-            }
+            $category_role_id = $this->request->post('role_id');
+            $category->role_id = $category_role_id;
+            $category->save();
             $this->request->redirect('dashboard/categories/list');
         }
     }

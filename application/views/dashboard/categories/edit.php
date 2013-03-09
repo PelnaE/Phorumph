@@ -15,22 +15,24 @@ Edit a Category </h3>
         <input type="text" name="description" value="<?php echo $category -> description; ?>" />
         </td>
     </tr>
-    <?php foreach ($roles as $role): ?>
-        <tr>
-            <td><?php echo $role->name; ?></td>
-            <td>
-                <input type="checkbox" name="<?php echo $role->name; ?>" value="<?php echo $role->id; ?>"
-                <?php if (in_array($role->id, array_values($categories_roles))): ?>
-                    checked="checked"
-                <?php endif; ?>
-                />
-            </td>
-        </tr>
-   <?php endforeach; ?>
-        <tr>
+    <tr>
+        <td>Roles:</td>
+        <td>
+            <select name="role_id">
+            <?php foreach ($roles as $role): ?>
+            <?php if ($category->role_id == $role->id): ?>
+                <option value="<?php echo $role->id; ?>" selected><?php echo $role->name; ?></option>
+            <?php else: ?>
+                <option value="<?php echo $role->id; ?>"><?php echo $role->name; ?></option>
+            <?php endif; ?>
+            <?php endforeach; ?>
+            </select>
+        </td>
+    </tr>
+    <tr>
         <td></td>
         <td>
-        <input type="submit" value="Proceed" />
+            <input type="submit" value="Proceed" />
         </td>
     </tr>
 </table>
