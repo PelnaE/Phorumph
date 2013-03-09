@@ -12,6 +12,7 @@ class Model_Category extends ORM
 		return DB::select()
 		->from('categories')
 		->distinct('TRUE')
+        ->group_by('id')
 		->join('roles_categories')
 		->on('roles_categories.category_id', '=', 'categories.id')
 		->order_by('categories.id', 'DESC')
@@ -23,8 +24,8 @@ class Model_Category extends ORM
         return DB::select()
         ->from('categories')
         ->join('roles_categories')
-        ->on('roles_categories.category_id', '=', 'categories.id')        
-        ->group_by('roles_categories.category_id')       
+        ->on('roles_categories.category_id', '=', 'categories.id')
+        ->group_by('roles_categories.category_id')
         ->where('categories.id', '=', $id)
         ->as_object()
         ->execute();
@@ -34,7 +35,7 @@ class Model_Category extends ORM
         return DB::select()
         ->from('categories')
         ->join('roles_categories')
-        ->on('roles_categories.category_id', '=', 'categories.id')     
+        ->on('roles_categories.category_id', '=', 'categories.id')
         ->where('categories.id', '=', $id)
         ->as_object()
         ->execute();
