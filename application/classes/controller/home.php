@@ -6,11 +6,11 @@ class Controller_Home extends Controller_Template {
 	{
 		$view = View::factory('home');
 		$view->categories = ORM::factory('category')->find_all();
-        $view->roles = ORM::factory('role')->find_all();
 		if (Auth::instance()->logged_in()) {
 			$user_id = Auth::instance()->get_user()->pk();
-			$users = ORM::factory('User')->get_data($user_id);
-            $view->role_id = ORM::factory('role', $user_id)->id;
+            echo Debug::vars($user_id);
+            $view->role_id = ORM::factory('roles_user', array('user_id' => $user_id))->as_array();
+            echo Debug::vars($view->role_id);
 		}
 		$this->template->content = $view->render();
 	}
