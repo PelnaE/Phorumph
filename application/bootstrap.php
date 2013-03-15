@@ -137,6 +137,13 @@ Route::set('dashboard/users', 'dashboard/users(/<action>(/<id>(/<id2>(/<id3>(/<i
         'action'     => 'list',
     ));
 
+Route::set('dashboard/topics', 'dashboard/topics(/<action>(/<id>(/<id2>(/<id3>(/<id4>)))))')
+    ->defaults(array(
+        'directory' => 'dashboard',
+        'controller' => 'topics',
+        'action'     => 'list',
+    ));
+
 Route::set('default', '(<controller>(/<action>(/<id>(/<id2>(/<id3>(/<id4>(/<id5>(/<id6>))))))))')
     ->defaults(array(
         'controller' => 'home',

@@ -1,6 +1,6 @@
 <?php defined('SYSPATH') or die ('No direct script access!');
 
-class Model_Topic extends Model
+class Model_Topic extends ORM
 {
     public function publish (array $data)
     {
@@ -28,7 +28,7 @@ class Model_Topic extends Model
             ->as_object()
             ->execute();
     }
-    public function update (array $data, $topic_id)
+    public function update_topic (array $data, $topic_id)
     {
         return DB::update('topics')
             ->set($data)
