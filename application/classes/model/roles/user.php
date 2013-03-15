@@ -11,5 +11,12 @@ class Model_Roles_User extends ORM {
             ->as_object()
             ->execute();
     }
+    public function delete_role ($role_id, $user_id)
+    {
+        return DB::delete('roles_users')
+            ->where('role_id', '=', $role_id)
+            ->and_where('user_id', '=', $user_id)
+            ->execute();
+    }
 }
 
