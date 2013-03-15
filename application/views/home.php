@@ -7,7 +7,8 @@
 	</tr>
 	<?php foreach($categories as $category): ?>
         <?php if (Auth::instance()->logged_in()): ?>
-            <?php if ($role_id['role_id'] >= $category->role_id): ?>
+<?php foreach ($role_id as $role ) ?>
+            <?php if ($role->role_id >= $category->role_id): ?>
         <tr>
             <td>
                 <?php echo $category->id; ?>

@@ -8,9 +8,7 @@ class Controller_Home extends Controller_Template {
 		$view->categories = ORM::factory('category')->find_all();
 		if (Auth::instance()->logged_in()) {
 			$user_id = Auth::instance()->get_user()->pk();
-            echo Debug::vars($user_id);
-            $view->role_id = ORM::factory('roles_user', array('user_id' => $user_id))->as_array();
-            echo Debug::vars($view->role_id);
+            $view->role_id = ORM::factory('roles_user')->get_last_role_id($user_id);
 		}
 		$this->template->content = $view->render();
 	}
