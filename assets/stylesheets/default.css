@@ -21,3 +21,6 @@ input[type=password]{
 	width: 200px;
 	border: 1px solid #DDDDDD;
 }
+table td {
+    padding: 5px;
+}

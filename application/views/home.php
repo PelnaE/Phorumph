@@ -1,5 +1,5 @@
 <h2>Categories:</h2>
-<table cellspacing="1" border="1" cellpadding="5" width="50%">
+<table cellspacing="1" border="0" cellpadding="5" width="50%">
 	<tr>
 		<th>ID</th>
 		<th>Category name and description</th>
@@ -11,7 +11,7 @@
             <?php if ($role->role_id >= $category->role_id): ?>
         <tr>
             <td>
-                <?php echo $category->id; ?>
+                # <?php echo $category->id; ?>
             </td>
             <td>
                 <?php echo $category->name; ?>
@@ -25,7 +25,7 @@
         <?php if ($category->role_id == 1): ?>
         <tr>
             <td>
-                <?php echo $category->id; ?>
+                # <?php echo $category->id; ?>
             </td>
             <td>
                 <?php echo $category->name; ?>
