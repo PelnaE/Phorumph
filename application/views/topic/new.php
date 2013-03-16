@@ -8,9 +8,11 @@
 		<?php if ($category->role_id == 1): ?>
 			<option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
 		<?php endif; ?>
-	<?php else: ?>
-		<?php if($role_id == $category->role_id): ?>
-			<option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
+	<?php endif; ?>
+<?php if (Auth::instance()->logged_in()): ?>
+        <?php foreach ($role_id as $role) ?>
+		<?php if($role->role_id >= $category->role_id): ?>
+            <option value="<?php echo $category->id ?>"><?php echo $category->name ?></option>
 		<?php endif; ?>
 	<?php endif; ?>
 	<?php endforeach; ?>

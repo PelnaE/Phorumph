@@ -14,7 +14,10 @@
                 # <?php echo $category->id; ?>
             </td>
             <td>
+            <a href="<?php echo URL::site('category/index/'.$category->id); ?>">
                 <?php echo $category->name; ?>
+            </a><br />
+<?php echo $category->description; ?>
             </td>
             <td>
             </td>
@@ -28,7 +31,10 @@
                 # <?php echo $category->id; ?>
             </td>
             <td>
+            <a href="<?php echo URL::site('category/index/'.$category->id); ?>">
                 <?php echo $category->name; ?>
+</a><br />
+<?php echo $category->description; ?>
             </td>
             <td>
             </td>
