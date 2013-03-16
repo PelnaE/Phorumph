@@ -100,8 +100,8 @@ class Controller_Profile extends Controller_Template
 		$view = View::factory('profile/view');
 		$topic = new Model_Topic();
 		$reply = new Model_Reply();
-		$view->replies = $reply->get_replies_by_user_id(Session::instance()->get('user_id'));
-		$view->topics = $topic->get_topics_by_user_id(Session::instance()->get('user_id'));
+		$view->replies = $reply->get_replies_by_user_id(Auth::instance()->get_user()->pk());
+		$view->topics = $topic->get_topics_by_user_id(Auth::instance()->get_user()->pk());
 		$view->user = $user->where('id', '=', Auth::instance()->get_user()->pk())->find();
 		$this->template->content = $view->render();
 	}

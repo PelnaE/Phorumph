@@ -1,4 +1,10 @@
-<h3>Edit</h3>
+<h3>
+<a href="<?php echo URL::site('dashboard'); ?>">Dashboard</a>
+&mdash;
+<a href="<?php echo URL::site('dashboard/topics/list'); ?>">List of Topics</a>
+&mdash;
+Edit</h3>
+
 <form action="<?php echo URL::site('dashboard/topics/edit/'.Request::current()->param('id').'/'.Security::token()); ?>" method="post">
 <table>
 <tr>
