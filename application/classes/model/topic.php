@@ -2,6 +2,7 @@
 
 class Model_Topic extends ORM
 {
+    protected $_table_name = 'topics';
     public function publish (array $data)
     {
         return DB::insert('topics', array_keys($data))
@@ -32,6 +33,12 @@ class Model_Topic extends ORM
     {
         return DB::update('topics')
             ->set($data)
+            ->where('topic_id', '=', $topic_id)
+            ->execute();
+    }
+    public function delete_topic ($topic_id)
+    {
+        return DB::delete('topics')
             ->where('topic_id', '=', $topic_id)
             ->execute();
     }

@@ -9,6 +9,7 @@ Topics
 <th>Name</th>
 <th>Author</th>
 <th>Date</th>
+<th>Options</th>
 </tr>
 <?php foreach ($topics as $topic): ?>
 <tr>
@@ -16,6 +17,12 @@ Topics
 <td><?php echo $topic->title; ?></td>
 <td><?php echo $topic->author_id; ?></td>
 <td><?php echo $topic->published; ?></td>
+<td>
+<a href="<?php echo URL::site('dashboard/topics/edit/'.$topic->topic_id); ?>">[Edit]</a>
+</td>
+<td>
+<a href="<?php echo URL::site('dashboard/topics/delete_topic/'.$topic->topic_id.'/'.Security::token()); ?>">[x]</a>
+</td>
 </tr>
 <?php endforeach; ?>
 </table>
