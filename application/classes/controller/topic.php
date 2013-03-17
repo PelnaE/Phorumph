@@ -61,7 +61,7 @@ class Controller_Topic extends Controller_Template
     }
     public function action_edit()
     {
-        if (Auth::is_user_signed_in()) {
+        if (Auth::instance()->logged_in()) {
             $view = View::factory("topic/edit");
             $topic_id = $this->request->param('id');
             $topic    = new Model_Topic();
@@ -81,7 +81,7 @@ class Controller_Topic extends Controller_Template
                     'title' => $topic_title,
                     'content' => $topic_content,
                 );
-                $update_topic = $topic->update($data, $topic_id);
+                $update_topic = $topic->update_topic($data, $topic_id);
                 if (!$update_topic) {
                     throw new Exception("Error");
                 }

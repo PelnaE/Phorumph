@@ -115,4 +115,13 @@ class Model_User extends Model_Auth_User
 		->as_object()
 		->execute();
 	}
+    public function delete_user ($user_id)
+    {
+        return DB::delete('users')
+            ->where('id', '=', $user_id)
+            ->execute();
+        return DB::delete('roles_user')
+            ->where('user_id', '=', $user_id)
+            ->execute();
+    }
 }

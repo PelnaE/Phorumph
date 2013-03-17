@@ -17,7 +17,13 @@
             <img src="<?php echo $topic->picture; ?>" height="80px" />
         </td>
         <td valign="top">
-            <?php echo date("d.m.Y H:i:s", $topic->published); ?><br />
+            <?php echo date("d.m.Y H:i:s", $topic->published); ?>
+<?php if (Auth::instance()->logged_in()): ?>
+<?php if (Auth::instance()->get_user()->pk() == $topic->id): ?>
+<a href="<?php echo URL::site('topic/edit/'.$topic->topic_id); ?>">Edit topic</a>
+<?php endif;?>
+<?php endif; ?>
+<br />
             <?php echo Darkmown::parse($topic->content); ?>
             <hr />
             <?php echo Darkmown::parse($topic->signature); ?>

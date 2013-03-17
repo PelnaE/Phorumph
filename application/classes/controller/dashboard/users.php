@@ -68,4 +68,14 @@ class Controller_Dashboard_Users extends Controller_Template
 			}
 		}
 	}
+    public function action_delete_user()
+    {
+        $user_id = $this->request->param('id');
+        if (!Security::check($this->request->param('id2'))) {
+            throw new Exception("Bad token!");
+        }
+        $user = ORM::factory('user');
+        $delete_user = $user->delete_user($user_id);
+        $this->request->redirect('dashboard/users/list');
+    }
 }

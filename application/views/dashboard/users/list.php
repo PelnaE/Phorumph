@@ -27,6 +27,10 @@
 			<?php endif; ?>
 		</td>
 		<td><?php echo $user->email; ?></td>
+        <td>
+<?php if (Auth::instance()->get_user()->pk() !== $user->id): ?>
+<a href="<?php echo URL::site('dashboard/users/delete_user/'.$user->id.'/'.Security::token()); ?>">[x]</a></td>
+<?php endif; ?>
 	</tr>
 	<?php endforeach; ?>
 </table>

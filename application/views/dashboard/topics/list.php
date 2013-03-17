@@ -16,7 +16,7 @@ Topics
 <td><?php echo $topic->topic_id; ?></td>
 <td><?php echo $topic->title; ?></td>
 <td><?php echo $topic->author_id; ?></td>
-<td><?php echo $topic->published; ?></td>
+<td><?php echo date('d.m.Y H:i:s', $topic->published); ?></td>
 <td>
 <a href="<?php echo URL::site('dashboard/topics/edit/'.$topic->topic_id); ?>">[Edit]</a>
 </td>
