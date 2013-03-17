@@ -30,6 +30,13 @@ class Controller_Template extends Kohana_Controller_Template
                         $this->request->redirect('');
                     }
                 }
+        } else {
+            if ($this->request->directory() == 'dashboard') {
+                $this->request->redirect('');
+            }
+            if ($this->request->uri() == 'dashboard') {
+                $this->request->redirect('');
+            }
         }
 
 	}
