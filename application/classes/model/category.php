@@ -54,4 +54,10 @@ class Model_Category extends ORM
 		->values(array_values($data))
 		->execute();
 	}
+    public function delete_category($category_id)
+    {
+        return DB::delete('categories')
+            ->where('id', '=', $category_id)
+            ->execute();
+    }
 }

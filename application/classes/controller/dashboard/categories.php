@@ -41,19 +41,22 @@ class Controller_Dashboard_Categories extends Controller_Template
 		$view->categories = ORM::factory('category')->order_by('id', 'DESC')->find_all();
 		$this->template->content = $view->render();
 	}
+    public function action_delete_category()
+    {
+        $category_id = $this->request->param('id');
+        if (!Security::check($this->request->param('id2'))) {
+            throw new Exception("Bad token!");
+        }
+        $category = ORM::factory('category');
+        $delete_category = $category->delete_category($category_id);
+        $this->request->redirect('dashboard/categories/list');
+    }
     public function action_edit()
     {
         $view = View::factory('dashboard/categories/edit');
         $category_id = $this->request->param('id');
         $view->category_id = $category_id;
         $view->category = ORM::factory('category', $category_id);
-        $categories_roles = ORM::factory('roles_category')
-        ->where('category_id', '=', $category_id)->find_all()->as_array();
-        foreach ($categories_roles as $role)
-        {
-            $category_roles[] = $role->role_id;
-        }
-        $view->categories_roles = $category_roles;
         $view->roles = ORM::factory('role')->find_all();
         $this->template->content = $view->render();
 
