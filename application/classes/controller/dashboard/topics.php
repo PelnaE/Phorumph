@@ -12,7 +12,8 @@ class Controller_Dashboard_Topics extends Controller_Template
     {
         $view = View::factory('dashboard/topics/edit');
         $topic_id = $this->request->param('id');
-        $view->topic = ORM::factory('Topic', array('topic_id' => $topic_id))->find();
+        $view->topic = ORM::factory('Topic')
+            ->where('topic_id', '=', $topic_id)->find();
         $this->template->content = $view->render();
 
         if ($this->request->method() === Request::POST) {
