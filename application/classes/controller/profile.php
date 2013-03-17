@@ -7,24 +7,24 @@ class Controller_Profile extends Controller_Template
 	{
 		$view = View::factory('profile/change_password');
 		$user = new Model_User();
-		$view->users = $user->get_data(Session::instance()->get('user_id'));
+		$view->users = $user->where('id', '=', Auth::instance()->get_user()->pk())->find();
 		$this->template->content = $view->render();
 		if ($this->request->method() === Request::POST) {
 			if (!Security::check($this->request->param('id'))) {
 				throw new Exception("Bad token!");
 			}
 			$email = $this->request->post('email');
-			$current_password = crypt($this->request->post('current_password'), 'generatedsalt');
+			$current_password = Auth::instance()->hash($this->request->post('current_password'));
 			$password = $this->request->post('password');
 			$password_again = $this->request->post('password_again');
 			if ($password !== $password_again) {
 				throw new Exception("Passwords must be identical!");
 			}
-			$password_from_db = $user->password_from_db(Session::instance()->get('user_id'), $current_password);
+			$password_from_db = $user->password_from_db(Auth::instance()->get_user()->pk(), $current_password);
 			if ($password_from_db !== $current_password) {
 				throw new Exception("You have entered incorrect your current password.");
 			}
-			$password = crypt($password, 'generatedsalt');
+			$password = Auth::instance()->hash($password);
 			$change_password = $user->change_password($password, $email);
 			if (!$change_password) {
 				throw new Exception("Error with password's change!");
