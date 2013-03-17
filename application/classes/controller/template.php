@@ -18,5 +18,19 @@ class Controller_Template extends Kohana_Controller_Template
 		}
 		$this->template->stylesheets = $config->stylesheets;
 		$this->template->site_name = $config->site_name;
+        if (Auth::instance()->logged_in()) {
+            $user_id = Auth::instance()->get_user()->pk();
+            $roles = ORM::factory('roles_user')->get_last_role_id($user_id);
+            foreach ($roles as $role)
+                if ($role->role_id == 1) {
+                    if ($this->request->directory() == 'dashboard') {
+                        $this->request->redirect('');
+                    }
+                    if ($this->request->uri() == 'dashboard') {
+                        $this->request->redirect('');
+                    }
+                }
+        }
+
 	}
 }
