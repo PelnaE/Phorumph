@@ -10,11 +10,11 @@ class Controller_Template extends Kohana_Controller_Template
 		parent::before();
 		if (Auth::instance()->logged_in()) {
 			$user                  = new Model_User();
-			$this->template->header = View::factory('profile/header')
+			$this->template->sidebar = View::factory('profile/sidebar')
 			->set('users', $user->where('id', '=', Auth::instance()->get_user()->pk())->find())
 			->set('users_levels', $user->get_level(Auth::instance()->get_user()->pk()));
 		} else {
-			$this->template->header = View::factory('login');
+			$this->template->sidebar = View::factory('login');
 		}
 		$this->template->stylesheets = $config->stylesheets;
 		$this->template->site_name = $config->site_name;

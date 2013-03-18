@@ -16,9 +16,6 @@
 				<?php echo $site_name; ?>
 			</a>
 		</h1>
-
-		<?php echo $header; ?>
-
 	</header>
 
 	<?php if (Auth::instance()->logged_in()): ?>
@@ -29,6 +26,10 @@
 
 	<?php endif; ?>
 
+    <div id="sidebar">
+<?php echo $sidebar; ?>
+</div>
+<div id="content">
 	<?php if (!isset($content)): ?>
 
 		<h2>No View is set</h2>
@@ -40,6 +41,7 @@
 
 	<?php endif; ?>
 
+</div>
 	<footer>
 
 		Powered by Phorumph Discussion Board.

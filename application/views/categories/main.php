@@ -1,9 +1,9 @@
 <?php if (count($category) >= 1): ?>
-    <h3>
-        <a href="<?php echo URL::site("/"); ?>">Back</a>
-            &mdash;
+    <p class="h3">
+        <a href="<?php echo URL::site("/"); ?>">Categories</a>
+           >
         <?php echo $category; ?>
-    </h3>
+    </p>
     <?php if (count($topics) >= 1): ?>
         <table border="1" cellspacing="1" cellpadding="5">
             <tr>

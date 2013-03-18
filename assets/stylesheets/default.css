@@ -14,13 +14,43 @@ a:visited {
 	border-bottom: 1px dotted #ddd;
 }
 input[type=text]{
-	width: 200px;
+	width: 120px;
 	border: 1px solid #ddd;
 }
 input[type=password]{
-	width: 200px;
+	width: 120px;
 	border: 1px solid #DDDDDD;
 }
 table td {
     padding: 5px;
+}
+#sidebar{
+    width: 210px;
+    float:left;
+}
+#sidebar p {
+    text-align: center;
+    padding: 0px;
+    margin:0px;
+}
+p.h3 {
+    font-size: 18px;
+    padding: 0px;
+    margin: 2px;
+}
+#content {
+    float:left;
+    width: 760px;
+    border: 1px solid #ddd;
+}
+.category {
+    margin: 5px;
+    padding: 0px;
+    width: 700px;
+}
+.category a{
+    font-size: 14px;
+    text-decoration: none;
+    border: 0px;
+    font-weight: bold;
 }
