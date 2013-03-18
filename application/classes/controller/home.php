@@ -2,12 +2,15 @@
 
 class Controller_Home extends Controller_Template {
 
-    public function action_index()
-    {
-        $view = View::factory('home');
-        $category = new Model_Category();
-        $view->categories = $category->get_all_categories();
-        $this->template->content = $view->render();
-    }
+	public function action_index()
+	{
+		$view = View::factory('home');
+		$view->categories = ORM::factory('category')->find_all();
+		if (Auth::instance()->logged_in()) {
+			$user_id = Auth::instance()->get_user()->pk();
+            $view->role_id = ORM::factory('roles_user')->get_last_role_id($user_id);
+		}
+		$this->template->content = $view->render();
+	}
 } // End Welcome
 

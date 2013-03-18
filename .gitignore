@@ -8,6 +8,7 @@ coverage
 kohana_release
 nbproject
 build
+.project
 application/cache
 application/logs
 modules/

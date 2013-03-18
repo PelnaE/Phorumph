@@ -1,6 +1,4 @@
-<?php foreach ($users as $user): ?>
-
-	<?php $user_id = Session::instance()->get('user_id'); ?>
+	<?php $user_id = Auth::instance()->get_user()->pk(); ?>
 
 	<h2><?php echo HTML::chars($user->username); ?>'s profile:</h2>
 
@@ -61,4 +59,3 @@
 <?php else: ?>
     <p>You do not have any replies there.</p>
 <?php endif; ?>
-<?php endforeach; ?>

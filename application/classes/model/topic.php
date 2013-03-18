@@ -1,7 +1,8 @@
 <?php defined('SYSPATH') or die ('No direct script access!');
 
-class Model_Topic extends Model
+class Model_Topic extends ORM
 {
+    protected $_table_name = 'topics';
     public function publish (array $data)
     {
         return DB::insert('topics', array_keys($data))
@@ -28,10 +29,16 @@ class Model_Topic extends Model
             ->as_object()
             ->execute();
     }
-    public function update (array $data, $topic_id)
+    public function update_topic (array $data, $topic_id)
     {
         return DB::update('topics')
             ->set($data)
+            ->where('topic_id', '=', $topic_id)
+            ->execute();
+    }
+    public function delete_topic ($topic_id)
+    {
+        return DB::delete('topics')
             ->where('topic_id', '=', $topic_id)
             ->execute();
     }

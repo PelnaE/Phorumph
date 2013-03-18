@@ -1,13 +1,12 @@
 <?php defined('SYSPATH') or die ('No direct script access');
 
-class Model_User extends ORM
+class Model_User extends Model_Auth_User
 {
-	public function create_user(array $data)
-	{
-		return DB::insert('users', array_keys($data))
-		->values(array_values($data))
-		->execute();
-	}
+	protected $_table_name = 'users';
+
+	protected $_has_many = array(
+        		'roles'       => array('model' => 'role', 'through' => 'roles_users'),
+	);
 	static function is_username_taked($username)
 	{
 		return ! DB::select(array(DB::expr('COUNT(username)'), 'total'))
@@ -53,7 +52,10 @@ class Model_User extends ORM
 	{
 		return DB::select()
 		->from('users')
-		->where('id', '=', $user_id)
+		->distinct('TRUE')
+		->join('roles_users')
+		->on('roles_users.user_id', '=', 'users.id')
+		->where('users.id', '=', $user_id)
 		->as_object()
 		->execute();
 	}
@@ -103,4 +105,23 @@ class Model_User extends ORM
 		->where('id', '=', $id)
 		->execute();
 	}
+	public function get_level($user_id)
+	{
+		return DB::select()
+		->from('users')
+		->join('roles_users')
+		->on('roles_users.user_id', '=', 'users.id')
+		->where('users.id', '=', $user_id)
+		->as_object()
+		->execute();
+	}
+    public function delete_user ($user_id)
+    {
+        return DB::delete('users')
+            ->where('id', '=', $user_id)
+            ->execute();
+        return DB::delete('roles_user')
+            ->where('user_id', '=', $user_id)
+            ->execute();
+    }
 }
