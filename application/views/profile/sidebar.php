@@ -1,8 +1,8 @@
-<p class="h3">
+<h2>
 <a href="<?php echo URL::site('profile/view/'.$users->id) ?>">
 		<?php echo HTML::chars($users->username); ?>
 	</a>
-</p>
+</h2>
 <?php if (!empty($users->picture)) : ?>
 	<p><img src="<?php echo $users->picture; ?>" height="50px" align="center" /></p>
 <?php endif; ?>
