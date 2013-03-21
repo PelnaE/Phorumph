@@ -1,68 +1,17 @@
 <?php if (count($topics) >= 1): ?>
 <?php foreach ($topics as $topic): ?>
-<h3>
-    <a href="<?php echo URL::site('category/index/'.$topic->category_id); ?>">
-        Back
-    </a>
-    &mdash;
-    <?php echo HTML::chars($topic->title); ?>
-<?php if (Auth::is_user_signed_in()): ?>
-     | <a href="<?php echo URL::site("topic/edit/".$topic->topic_id); ?>">Edit a Topic</a>
-<?php endif; ?>
-</h3>
-<table width="40%" border="1px" cellspacing="1" cellpadding="5">
-    <tr>
-        <td width="10%">
-            <?php echo $topic->username; ?>
-            <img src="<?php echo $topic->picture; ?>" height="80px" />
-        </td>
-        <td valign="top">
-            <?php echo date("d.m.Y H:i:s", $topic->published); ?>
-<?php if (Auth::instance()->logged_in()): ?>
-<?php if (Auth::instance()->get_user()->pk() == $topic->id): ?>
-<a href="<?php echo URL::site('topic/edit/'.$topic->topic_id); ?>">Edit topic</a>
-<?php endif;?>
-<?php endif; ?>
-<br />
-            <?php echo Darkmown::parse($topic->content); ?>
-            <hr />
-            <?php echo Darkmown::parse($topic->signature); ?>
-        </td>
-    </tr>
-</table>
-<h3>Replies:</h3>
-<?php if (count($replies) >= 1): ?>
-    <table width="40%" border="1px" cellspacing="1" cellpadding="5">
-    <?php foreach ($replies as $reply): ?>
-        <tr>
-            <td width="10%">
-                <?php echo $reply->username; ?>
-                <img src="<?php echo $reply->picture; ?>" height="80px" />
-            </td>
-            <td valign="top">
-            <?php echo date('d.m.Y H:i:s', $reply->date); ?> |
-            <?php if (Auth::instance()->get_user()->pk() === $reply->user_id): ?>
-            <a href="<?php echo URL::site('topic/edit_reply/'.$reply->reply_id) ?>">Edit a reply.</a>
-            <?php endif; ?><br />
-                <?php echo Darkmown::parse($reply->content); ?>
-            _____
-                <?php echo Darkmown::parse($reply->signature); ?>
-            </td>
-        </tr>
-    <?php endforeach ;?>
-    </table>
-<?php endif; ?>
-<h3>Reply to a topic:</h3>
-<?php if (Auth::instance()->logged_in()): ?>
-<form action="<?php echo URL::site('topic/reply/'.Security::token()); ?>" method="post">
-    <input type="hidden" value="<?php echo $topic->topic_id; ?>" name="topic_id" />
-    <textarea rows="10" cols="75" name="content"></textarea><br />
-    <input type="submit" value="Reply" />
-</form>
+<div class="post">
+<?php if ($topic->picture): ?>
+<img src="<?php echo $topic->picture; ?>" width="50px" height="50px" border="0px" align="left" />
 <?php else: ?>
-    You can't reply to this topic, because you are a guest.
+<img src="" border="0px" width="50px" height="50px"align="left" />
 <?php endif; ?>
+<div class="username"><?php echo $topic->username; ?></div>
+    <div class="published">Was published - <?php echo date('d.m.Y H:i:s', $topic->published); ?></div>
+    <div class="post-content"><?php echo Darkmown::parse($topic->content); ?></div>
+<?php if ($topic->signature): ?>
+<div class="post-signature"><?php echo Darkmown::parse($topic->signature); ?></div>
+<?php endif; ?>
+</div>
 <?php endforeach; ?>
-<?php else: ?>
-    <h3>Topic with that ID do not exists!</h3>
 <?php endif; ?>

@@ -46,7 +46,6 @@ p.h3 {
 #content {
     float:left;
     width: 760px;
-    border: 1px solid #ddd;
 }
 .title {
     margin: 0px;
@@ -68,4 +67,33 @@ h2 a {
     color: #444444;
     text-decoration: underline;
     border: 0px;
+}
+div.username {
+    margin: 2px;
+    font-size: 16px;
+}
+div.published{
+    margin: 0px;
+    font-size: 10px;
+}
+div.post-content {
+    padding: 15px;
+    line-height: 15px;
+}
+div.post-signature {
+    padding: 0px 0px 0px 0px;
+    margin-left: 15px;
+    line-height: 0px;
+    border-top: 1px solid #ddd;
+    font-size: 12px;
+    width: 350px;
+
+}
+footer {
+    font-size: 10px;
+    margin: 15px;
+    padding: 15px;
+}
+div.clear-both {
+    clear:both;
 }

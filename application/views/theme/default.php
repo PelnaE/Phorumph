@@ -41,7 +41,7 @@
 
 	<?php endif; ?>
 
-</div>
+</div><div class="clear-both"></div>
 	<footer>
 
 		Powered by Phorumph Discussion Board.
