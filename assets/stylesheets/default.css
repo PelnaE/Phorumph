@@ -89,6 +89,9 @@ div.post-signature {
     width: 350px;
 
 }
+div.post {
+    margin: 15px;
+}
 footer {
     font-size: 10px;
     margin: 15px;
