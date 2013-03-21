@@ -1,4 +1,4 @@
-<p class="h3">Login:</p>
+<h2>Login:</h2>
 <form action="<?php echo URL::site('login/index/'.Security::token()); ?>" method="post">
     <table>
         <tr>
