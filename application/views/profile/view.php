@@ -1,4 +1,4 @@
-	<?php $user_id = Auth::instance()->get_user()->pk(); ?>
+	<?php $user_id = Request::current()->param('id'); ?>
 
 	<h2><?php echo HTML::chars($user->username); ?>'s profile:</h2>
 
