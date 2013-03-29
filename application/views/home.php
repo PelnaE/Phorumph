@@ -1,7 +1,7 @@
 <p class="h3">Categories:</p>
 <table>
     <tr>
-        <th>Category Title</th>
+        <th class="title">Category Title</th>
         <th>Topics Count</th>
         <th>Last Topic</th>
 	<?php foreach($categories as $category): ?>

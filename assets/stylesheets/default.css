@@ -25,6 +25,9 @@ input[type=password]{
 td.title {
     min-width: 400px;
 }
+th.title {
+min-width: 400px;
+}
 tr:hover {
     background-color: #fbfbfb;
 }
