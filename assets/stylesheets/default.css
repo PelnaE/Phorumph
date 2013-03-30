@@ -14,13 +14,9 @@ a:visited {
 	text-decoration: none;
 	border-bottom: 1px dotted #ddd;
 }
-input[type=text]{
+input[type=text], input[type=email], input[type=password]{
 	width: 120px;
 	border: 1px solid #ddd;
-}
-input[type=password]{
-	width: 120px;
-	border: 1px solid #DDDDDD;
 }
 td.title {
     min-width: 400px;
