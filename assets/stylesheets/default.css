@@ -61,13 +61,14 @@ p.h3 {
     font-size: 15px;
     font-weight: 600;
 }
-h2 {
+h2, h3 {
     font-weight: 600;
     margin: 0px;
+    margin-bottom: 3px;
     padding: 0px;
     color: #444444;
 }
-h2 a {
+h2 a, h3 a{
     color: #444444;
     text-decoration: underline;
     border: 0px;
