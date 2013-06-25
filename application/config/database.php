@@ -6,7 +6,7 @@ return array(
 			'connection' => array(
 				'hostname' => 'localhost',
 				'database' => 'Phorumph',
-				'username' => 'regative',
+				'username' => 'reGative',
 				'password' => 'mjaumjau',
 				'persistent' => false,
 				),
