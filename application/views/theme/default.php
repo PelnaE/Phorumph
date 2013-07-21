@@ -10,7 +10,9 @@
 <body>
 
 	<header>
-
+		<div id="topbar">
+			<?php echo $topbar; ?>
+		</div>
 		<h1>
 			<a href="<?php echo URL::site(''); ?>">
 				<?php echo $site_name; ?>
@@ -26,9 +28,6 @@
 
 	<?php endif; ?>
 
-    <div id="sidebar">
-<?php echo $sidebar; ?>
-</div>
 <div id="content">
 	<?php if (!isset($content)): ?>
 

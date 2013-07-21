@@ -1,3 +1,7 @@
+* {
+margin:0px;
+padding: 0px;
+}
 body {
 font-family: Verdana, sans-serif;
 font-size: 12px;
@@ -44,7 +48,13 @@ tr:hover {
     padding: 0px;
     margin:0px;
 }
-
+#topbar {
+	height: 40px;
+	line-height: 40px;
+	padding-left: 10px;
+	border-bottom: 1px solid #ddd;
+	background: #fefefe;
+}
 p.h3 {
     font-size: 18px;
     padding: 0px;
