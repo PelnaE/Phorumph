@@ -15,9 +15,12 @@ a:visited {
 	border-bottom: 1px dotted #ddd;
 }
 input[type=text], input[type=email], input[type=password]{
-	width: 120px;
+	width: 150px;
 	padding: 5px;
 	border: 1px solid #ddd;
+}
+input.login {
+	width: 120px;
 }
 input[type=text]:focus, input[type=email]:focus, input[type=password]:focus{
     background: #fcfcfc;

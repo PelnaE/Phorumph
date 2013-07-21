@@ -3,11 +3,11 @@
     <table>
         <tr>
             <td>Username</td>
-            <td><input type="text" name="username" /></td>
+            <td><input type="text" class="login" name="username" /></td>
         </tr>
         <tr>
             <td>Password</td>
-            <td><input type="password" name="password" /></td>
+            <td><input type="password" class="login" name="password" /></td>
         </tr>
     </table>
 	<label><input type="checkbox" name="cookie" /> Remember me!</label>
