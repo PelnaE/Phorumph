@@ -1,3 +1,4 @@
+<div class="topbar-user">
 <?php if (!empty($users->picture)) : ?>
 	<img src="<?php echo $users->picture; ?>" height="25px" align="center" />
 <?php endif; ?>
@@ -5,26 +6,26 @@
 <a href="<?php echo URL::site('profile/view/'.$users->id) ?>">
 		<?php echo HTML::chars($users->username); ?>
 	</a>
-
+</div>
 
 <?php if ($users->picture): ?>
-    <a href="<?php echo URL::site('profile/delete_avatar/'.Security::token()); ?>">
+    <div class="topbar-item"><a href="<?php echo URL::site('profile/delete_avatar/'.Security::token()); ?>">
 		Delete Avatar
-	</a>
+	</a></div>
 <?php endif; ?>
 
-<a href="<?php echo URL::site('profile/upload_avatar'); ?>">
+<div class="topbar-item"><a href="<?php echo URL::site('profile/upload_avatar'); ?>">
 	Upload avatar
-</a>
+</a></div>
 
-<a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">
+<div class="topbar-item"><a href="<?php echo URL::site('logout/index/'.Security::token()); ?>">
 	Logout
-</a>
+</a></div>
 
 <?php foreach($users_levels as $user_level): ?>
 	<?php if ($user_level->role_id == 2): ?>
-		<a href="<?php echo URL::site('dashboard'); ?>">
+		<div class="topbar-item"><a href="<?php echo URL::site('dashboard'); ?>">
 			Dashboard
-		</a>
+		</a></div>
 	<?php endif; ?>
 <?php endforeach; ?>

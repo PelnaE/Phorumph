@@ -16,6 +16,17 @@ a:visited {
 	color: #444;
 	text-decoration: none;
 }
+.topbar-user {
+		width: 100px;
+		border-right: 1px solid #ddd;
+		float: left;
+}
+.topbar-item {
+		width: 95px;
+		text-align: center;
+		border-right: 1px solid #ddd;
+		float:left;
+}
 input[type=text], input[type=email], input[type=password]{
 	width: 150px;
 	padding: 5px;
