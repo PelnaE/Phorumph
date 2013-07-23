@@ -9,14 +9,12 @@ color: #444;
 }
 
 a:link {
-	color: #000000;
+	color: #444;
 	text-decoration: none;
-	border-bottom: 1px dotted #ccc;
 }
 a:visited {
-	color: #222222;
+	color: #444;
 	text-decoration: none;
-	border-bottom: 1px dotted #ddd;
 }
 input[type=text], input[type=email], input[type=password]{
 	width: 150px;
