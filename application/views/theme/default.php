@@ -9,10 +9,11 @@
 </head>
 <body>
 
-	<header>
 		<div id="topbar">
 			<?php echo $topbar; ?>
 		</div>
+<div id="container">
+<header>
 		<h1>
 			<a href="<?php echo URL::site(''); ?>">
 				<?php echo $site_name; ?>
@@ -20,13 +21,24 @@
 		</h1>
 	</header>
 
+<div class="menu-bar">
+<div class="menu-item">
+<a href="<?php echo URL::site(); ?>">Home</a>
+</div>
+<div class="menu-item">
+<a href="">FAQ</a>
+</div>
+<div class="menu-item">
+<a href="">Search</a>
+</div>
+<div class="menu-item">
+
 	<?php if (Auth::instance()->logged_in()): ?>
-
-		<h3>
-			<a href="<?php echo URL::site('topic/new'); ?>">Start a new discussion.</a>
-		</h3>
-
+			<a href="<?php echo URL::site('topic/new'); ?>">Start a discussion</a>
 	<?php endif; ?>
+</div>
+<div class="clear-both"></div>
+</div>
 
 <div id="content">
 	<?php if (!isset($content)): ?>
@@ -48,6 +60,7 @@
 
 	</footer>
 
+</div>
 </body>
 
 </html>

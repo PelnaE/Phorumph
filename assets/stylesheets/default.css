@@ -27,6 +27,12 @@ a:visited {
 		border-right: 1px solid #ddd;
 		float:left;
 }
+#container {
+		width: 950px;
+		border-left: 2px solid #ddd;
+		border-right: 2px solid #ddd;
+		margin: auto;
+}
 input[type=text], input[type=email], input[type=password]{
 	width: 150px;
 	padding: 5px;
@@ -71,6 +77,7 @@ p.h3 {
 }
 #content {
     float:left;
+	padding: 20px;
     width: 760px;
 }
 .title {
@@ -121,9 +128,30 @@ div.post {
 }
 footer {
     font-size: 10px;
-    margin: 15px;
-    padding: 15px;
+	border-top: 2px solid #ddd;
+	padding: 20px;
 }
 div.clear-both {
     clear:both;
+}
+header {
+		padding: 20px;
+		border-bottom: 2px solid #ddd;
+}
+.menu-bar{
+		border-bottom: 2px solid #ddd;
+		height: 40px;
+		font-size: 12px;
+}
+.menu-item a{
+		float: left;
+		width: 120px;
+		height: 40px;
+		line-height: 40px;
+		border-right: 1px solid #ddd;
+		text-align: center;
+}
+.menu-item a:hover {
+		background: #dddddd;
+		color: #ffffff;
 }
