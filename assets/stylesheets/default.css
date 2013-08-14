@@ -129,6 +129,7 @@ div.post {
 footer {
     font-size: 10px;
 	border-top: 2px solid #ddd;
+	border-bottom: 2px solid #ddd;
 	padding: 20px;
 }
 div.clear-both {
