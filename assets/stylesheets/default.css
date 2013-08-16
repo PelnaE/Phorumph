@@ -135,6 +135,8 @@ div.post {
 }
 footer {
     font-size: 10px;
+    background: #0064B5;
+    color: #fdfdfd;
 	border-top: 2px solid #ddd;
 	border-bottom: 2px solid #ddd;
 	padding: 20px;
@@ -149,17 +151,23 @@ header {
 .menu-bar{
 		border-bottom: 2px solid #ddd;
 		height: 40px;
+		background: #0064B5;
 		font-size: 12px;
 }
-.menu-item a{
+li.menu-item {
+	float:left;
+	list-style-type: none;
+}
+li.menu-item a{
 		float: left;
 		width: 120px;
 		height: 40px;
 		line-height: 40px;
 		border-right: 1px solid #ddd;
 		text-align: center;
+		color: #fdfdfd;
 }
 .menu-item a:hover {
-		background: #dddddd;
-		color: #ffffff;
+		background: #fdfdfd;
+		color: #0064B5;
 }

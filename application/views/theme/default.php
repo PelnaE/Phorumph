@@ -21,24 +21,23 @@
 		</h1>
 	</header>
 
-<div class="menu-bar">
-<div class="menu-item">
+<ul class="menu-bar">
+<li class="menu-item">
 <a href="<?php echo URL::site(); ?>">Home</a>
-</div>
-<div class="menu-item">
+</li>
+<li class="menu-item">
 <a href="">FAQ</a>
-</div>
-<div class="menu-item">
+</li>
+<li class="menu-item">
 <a href="">Search</a>
-</div>
-<div class="menu-item">
+</li>
+<li class="menu-item">
 
 	<?php if (Auth::instance()->logged_in()): ?>
 			<a href="<?php echo URL::site('topic/new'); ?>">Start a discussion</a>
 	<?php endif; ?>
-</div>
-<div class="clear-both"></div>
-</div>
+</li>
+</ul>
 
 <div id="content">
 	<?php if (!isset($content)): ?>
