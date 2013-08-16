@@ -1,4 +1,4 @@
-  dminer 3.6.2 MySQL dump
+-- Adminer 3.6.2 MySQL dump
 
 SET NAMES utf8;
 SET foreign_key_checks = 0;
@@ -44,10 +44,8 @@ CREATE TABLE `roles` (
       PRIMARY KEY (`id`),
       UNIQUE KEY `uniq_name` (`name`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `roles` (`id`, `name`, `description`) VALUES
-(1,VALUES'login',login'Login privileges, granted after account confirmation'),
-(2,confirmation'admin',admin'Administrative user, has access to everything.');
+INSERT INTO `roles` (`id`, `name`, `description`) VALUES(1, 'login', 'Login privileges, granted after account confirmation');
+INSERT INTO `roles` (`id`, `name`, `description`) VALUES(2, 'admin', 'Administrative user, has access to everything.');
 
 DROP TABLE IF EXISTS `roles_categories`;
 CREATE TABLE `roles_categories` (

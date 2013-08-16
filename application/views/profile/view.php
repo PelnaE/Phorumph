@@ -1,4 +1,4 @@
-	<?php $user_id = Auth::instance()->get_user()->pk(); ?>
+	<?php $user_id = Request::current()->param('id'); ?>
 
 	<h2><?php echo HTML::chars($user->username); ?>'s profile:</h2>
 
@@ -6,7 +6,7 @@
 
 		<h3>Avatar (<a href="<?php echo URL::site('profile/upload_avatar'); ?>">edit</a>)</h3>
 
-		<img src="<?php echo $user->picture; ?>" height="120px" align="left" />
+		<img src="<?php echo $user->picture; ?>" height="120px"/>
 
 	<?php endif; ?>
 

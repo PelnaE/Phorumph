@@ -1,23 +1,21 @@
 <?php if (count($category) >= 1): ?>
-    <h3>
-        <a href="<?php echo URL::site("/"); ?>">Back</a>
-            &mdash;
+    <h2>
+        <a href="<?php echo URL::site("/"); ?>">Categories</a>
+           >
         <?php echo $category; ?>
-    </h3>
+    </h2>
     <?php if (count($topics) >= 1): ?>
-        <table border="1" cellspacing="1" cellpadding="5">
+        <table>
             <tr>
-                <th>ID</th>
                 <th>Title</th>
                 <th>Published</th>
                 <th>Author</th>
             </tr>
         <?php foreach($topics as $topic): ?>
         <tr>
-                <td><?php echo $topic->topic_id; ?></td>
-                <td><a href="<?php echo URL::site('topic/view/'.$topic->topic_id); ?>"><?php echo HTML::chars($topic->title); ?></a></td>
+                <td class="title"><a href="<?php echo URL::site('topic/view/'.$topic->topic_id); ?>"><?php echo HTML::chars($topic->title); ?></a></td>
                 <td><?php echo date('d.m.Y H:i:s', $topic->published); ?></td>
-                <td><?php echo $topic->username; ?></td>
+                <td><a href="<?php echo URL::site('profile/view/'.$topic->id); ?>"><?php echo $topic->username; ?></a></td>
             </tr>
         <?php endforeach; ?>
         </table>

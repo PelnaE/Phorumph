@@ -13,3 +13,5 @@ application/cache
 application/logs
 modules/
 system/
+.buildpath
+.settings/*

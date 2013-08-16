@@ -8,23 +8,23 @@
 <form action="<?php echo URL::site('register/index/'.Security::token()); ?>" method="post">
 	<table>
 		<tr>
-			<th>Email</th>
+			<td class="title">Email</td>
 			<td><input type="email" name="email" /></td>
 		</tr>
 		<tr>
-			<th>Username</th>
+			<td class="title">Username</td>
 			<td><input type="text" name="username" /></td>
 		</tr>
 		<tr>
-			<th>Password</th>
+			<td class="title">Password</td>
 			<td><input type="password" name="password" /></td>
 		</tr>
 		<tr>
-			<th>Password. Again.</th>
+			<td class="title">Password. Again.</td>
 			<td><input type="password" name="password_again" /></td>
 		</tr>
 		<tr>
-			<th></th>
+			<td class="title"></td>
 			<td><input type="submit" value="Register" /></td>
 	</table>
 </form>
