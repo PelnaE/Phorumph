@@ -3,17 +3,17 @@
 // -- Environment setup --------------------------------------------------------
 
 // Load the core Kohana class
-require SYSPATH.'classes/kohana/core'.EXT;
+require SYSPATH.'classes/Kohana/Core'.EXT;
 
-if (is_file(APPPATH.'classes/kohana'.EXT))
+if (is_file(APPPATH.'classes/Kohana'.EXT))
 {
 	// Application extends the core
-	require APPPATH.'classes/kohana'.EXT;
+	require APPPATH.'classes/Kohana'.EXT;
 }
 else
 {
 	// Load empty core extension
-	require SYSPATH.'classes/kohana'.EXT;
+	require SYSPATH.'classes/Kohana'.EXT;
 }
 
 /**
@@ -119,33 +119,33 @@ Kohana::modules(array(
 
 Route::set('dashboard', 'dashboard')
             ->defaults(array(
-                        'controller' => 'dashboard',
+                        'controller' => 'Dashboard',
                         'action'      => 'index',
             ));
 
 Route::set('dashboard/categories', 'dashboard/categories(/<action>(/<id>(/<id2>(/<id3>(/<id4>)))))')
     ->defaults(array(
-        'directory'  => 'dashboard',
-        'controller' => 'categories',
+        'directory'  => 'Dashboard',
+        'controller' => 'Categories',
         'action'     => 'create',
     ));
 
 Route::set('dashboard/users', 'dashboard/users(/<action>(/<id>(/<id2>(/<id3>(/<id4>)))))')
     ->defaults(array(
-        'directory' => 'dashboard',
-        'controller' => 'users',
+        'directory' => 'Dashboard',
+        'controller' => 'Users',
         'action'     => 'list',
     ));
 
 Route::set('dashboard/topics', 'dashboard/topics(/<action>(/<id>(/<id2>(/<id3>(/<id4>)))))')
     ->defaults(array(
-        'directory' => 'dashboard',
-        'controller' => 'topics',
+        'directory' => 'Dashboard',
+        'controller' => 'Topics',
         'action'     => 'list',
     ));
 
 Route::set('default', '(<controller>(/<action>(/<id>(/<id2>(/<id3>(/<id4>(/<id5>(/<id6>))))))))')
     ->defaults(array(
-        'controller' => 'home',
+        'controller' => 'Home',
         'action'     => 'index',
     ));
