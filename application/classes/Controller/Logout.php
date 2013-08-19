@@ -20,6 +20,6 @@ class Controller_Logout extends Controller_Template
 		if (!Auth::instance()->logout()) {
 			throw new Exception("Session error.");
 		}
-		$this->request->redirect('/');
+		$this->redirect('/');
 	}
 }

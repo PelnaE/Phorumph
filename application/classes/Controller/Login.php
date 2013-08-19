@@ -15,7 +15,7 @@ class Controller_Login extends Controller_Template
 			$success = $auth->login($post['username'], $post['password'], FALSE);
 		}
 		if ($success) {
-			$this->request->redirect('/');
+			$this->redirect('/');
 		} else {
 			throw new Exception("login was unsuccessful!");
 		}
