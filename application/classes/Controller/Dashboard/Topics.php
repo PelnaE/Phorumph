@@ -29,7 +29,7 @@ class Controller_Dashboard_Topics extends Controller_Template
                 'content' => $topic_content,
             );
             $update_topic = $topic->update_topic ($data, $topic_id);
-            $this->request->redirect('dashboard/topics/list');
+            $this->redirect('dashboard/topics/list');
         }
     }
     public function action_delete_topic()
@@ -43,6 +43,6 @@ class Controller_Dashboard_Topics extends Controller_Template
         if (!$delete_topic) {
             throw new Exception ("Topic was unable to delete");
         }
-        $this->request->redirect('dashboard/topics/list');
+        $this->redirect('dashboard/topics/list');
     }
 }

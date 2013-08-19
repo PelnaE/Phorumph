@@ -31,7 +31,7 @@ class Controller_Dashboard_Categories extends Controller_Template
 			if (!$create_category) {
 				throw new Exception("Error with creating a category!");
 			}
-			$this->request->redirect('dashboard/categories/list');
+			$this->redirect('dashboard/categories/list');
 		}
 	}
 
@@ -49,7 +49,7 @@ class Controller_Dashboard_Categories extends Controller_Template
         }
         $category = ORM::factory('Category');
         $delete_category = $category->delete_category($category_id);
-        $this->request->redirect('dashboard/categories/list');
+        $this->redirect('dashboard/categories/list');
     }
     public function action_edit()
     {
@@ -74,7 +74,7 @@ class Controller_Dashboard_Categories extends Controller_Template
             $category_role_id = $this->request->post('role_id');
             $category->role_id = $category_role_id;
             $category->save();
-            $this->request->redirect('dashboard/categories/list');
+            $this->redirect('dashboard/categories/list');
         }
     }
 }

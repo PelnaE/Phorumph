@@ -31,7 +31,7 @@ class Controller_Dashboard_Users extends Controller_Template
             $roles_user->role_id = $role_id;
             $roles_user->user_id = $user_id;
             $roles_user->save();
-            $this->request->redirect('dashboard/users/roles_list');
+            $this->redirect('dashboard/users/roles_list');
         }
     }
     public function action_delete_role()
@@ -42,7 +42,7 @@ class Controller_Dashboard_Users extends Controller_Template
             throw new Exception("Bad token!");
         }
         $roles_user = ORM::factory('Roles_User')->delete_role($role_id, $user_id);
-        $this->request->redirect('dashboard/users/roles_list');
+        $this->redirect('dashboard/users/roles_list');
     }
 
 	public function action_change_username()
@@ -64,7 +64,7 @@ class Controller_Dashboard_Users extends Controller_Template
 			if ($post->check()) {
 				$users->username = $this->request->post('username');
 				$users->save();
-				$this->request->redirect('dashboard/users/list');
+				$this->redirect('dashboard/users/list');
 			}
 		}
 	}
@@ -76,6 +76,6 @@ class Controller_Dashboard_Users extends Controller_Template
         }
         $user = ORM::factory('user');
         $delete_user = $user->delete_user($user_id);
-        $this->request->redirect('dashboard/users/list');
+        $this->redirect('dashboard/users/list');
     }
 }

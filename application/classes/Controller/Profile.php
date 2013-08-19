@@ -29,7 +29,7 @@ class Controller_Profile extends Controller_Template
 			if (!$change_password) {
 				throw new Exception("Error with password's change!");
 			}
-			$this->request->redirect('/');
+			$this->redirect('/');
 		}
 	}
 	public function action_upload_avatar()
@@ -52,7 +52,7 @@ class Controller_Profile extends Controller_Template
 				if (!$change_avatar) {
 					throw new Exception("Error with uploading avatar. \n $change_avatar");
 				}
-				$this->request->redirect('/');
+				$this->redirect('/');
 			}
 		}
 	}
@@ -67,7 +67,7 @@ class Controller_Profile extends Controller_Template
 		if (!$delete_avatar) {
 			throw new Exception("Error with deleting avatar.");
 		}
-		$this->request->redirect('profile/view/'.Auth::instance()->get_user()->pk());
+		$this->redirect('profile/view/'.Auth::instance()->get_user()->pk());
 	}
 
 	public function action_change_signature()
@@ -84,7 +84,7 @@ class Controller_Profile extends Controller_Template
 			if (!$update_signature) {
 				throw new Exception('Signature could not be saved!');
 			}
-			$this->request->redirect('/');
+			$this->redirect('/');
 		}
 		$this->template->content = $view->render();
 	}

@@ -32,7 +32,7 @@ class Controller_Forgot_Password extends Controller_Template
 			if (!$send_email) {
 				throw new Exception("Cannot send email! \n $send_email");
 			}
-			$this->request->redirect('/');
+			$this->redirect('/');
 		}
 	}
 	public function action_do()
@@ -64,7 +64,7 @@ class Controller_Forgot_Password extends Controller_Template
 			if (!$chmod_attemp) {
 				throw new Exception("False");
 			}
-			$this->request->redirect('');
+			$this->redirect('');
 		}
 		$this->template->content = $view->render();
 	}

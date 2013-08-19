@@ -45,7 +45,7 @@ class Controller_Topic extends Controller_Template
                 $this->request->redirect('category/index/'.$category_id);
             }
         } else {
-            $this->request->redirect('');
+            $this->redirect('');
         }
     }
 
@@ -85,10 +85,10 @@ class Controller_Topic extends Controller_Template
                 if (!$update_topic) {
                     throw new Exception("Error");
                 }
-                $this->request->redirect('topic/view/'.$topic_id);
+                $this->redirect('topic/view/'.$topic_id);
             }
         } else {
-            $this->request->redirect('');
+            $this->redirect('');
         }
     }
     public function action_reply()
@@ -109,7 +109,7 @@ class Controller_Topic extends Controller_Template
             if (!$send_reply) {
                 throw new Exception("Fail with sending a reply!");
             }
-            $this->request->redirect('topic/view/'.$topic_id);
+            $this->redirect('topic/view/'.$topic_id);
         }
     }
     // Coming soon...
@@ -136,7 +136,7 @@ class Controller_Topic extends Controller_Template
                 if (!$update_reply) {
                     throw new Exception("Reply will not be updated");
                 }
-                $this->request->redirect('topic/view/'.$topic_id);
+                $this->redirect('topic/view/'.$topic_id);
             }
         }
     }
