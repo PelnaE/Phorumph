@@ -1,4 +1,4 @@
-# Phorumph (Based on [Kohana 3.2](http://kohanaframework.org 'Kohana Framework'))
+# Phorumph (Based on [Kohana 3.3](http://kohanaframework.org 'Kohana Framework'))
 
 ## What is it?
 
